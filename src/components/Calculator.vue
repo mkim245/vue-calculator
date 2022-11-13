@@ -30,14 +30,18 @@ export default {
 
 <style scoped>
 .calculator {
-  font-size:40px;
+  font-size:50px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: minmax(50px, auto);
 }
 .display {
   grid-column: 1 / 5;
-  background-color: red;
+  background-color: green;
+  color: white;
+  font-weight: bold;
+  border-radius: 20%;
+  text-align: right;
 }
 
 .zero {
@@ -47,5 +51,7 @@ export default {
 .btn {
   background-color: #eee;
   border: 1px solid #333;
+  border-radius: 30%;
+  text-align: center;
 }
 </style>
