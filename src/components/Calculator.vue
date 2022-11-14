@@ -19,6 +19,11 @@ export default {
     },
     append(number) {
       this.current = `${this.current}${number}`;
+    },
+    dot() {
+      if (this.current.indexOf('.') === -1) {
+        this.append('.');
+      }
     }
   }
 }
@@ -45,7 +50,7 @@ export default {
     <div @click="append('3')" class="btn">3</div>
     <div class="btn operator">+</div>
     <div @click="append('0')" class="btn zero">0</div>
-    <div class="btn">.</div>
+    <div @click="dot" class="btn">.</div>
     <div class="btn operator">=</div>
   </div>
 </template>
