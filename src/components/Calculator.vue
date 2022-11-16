@@ -36,6 +36,12 @@ export default {
       this.previous = this.current;
       this.operatorClicked = true;
     },
+    logarithm() {
+      this.current = `${Math.log(this.current)}`;
+    },
+    exponent() {
+      this.current = `${Math.pow(this.current, 2)}`;
+    },
     divide() {
       this.operator = (a, b) => a / b;
       this.setPrevious();
@@ -68,8 +74,8 @@ export default {
   <div class="calculator">
     <div class="display">{{ current || '0' }}</div>
     <div @click="clear" class="btn">AC</div>
-    <div class="btn">Log</div>
-    <div class="btn">Exp</div>
+    <div @click="logarithm" class="btn">Log</div>
+    <div @click="exponent" class="btn">Exp</div>
     <div @click="percent" class="btn">%</div>
     <div @click="sign" class="btn">+/–</div>
     <div @click="append('(')" class="btn">(</div>
@@ -106,10 +112,11 @@ export default {
 
 .display {
   grid-column: 1 / 5;
+  grid-row: 1 / 5;
   background-color: green;
   color: white;
   font-weight: bold;
-  border-radius: 20%;
+  border-radius: 5%;
   text-align: right;
 }
 
