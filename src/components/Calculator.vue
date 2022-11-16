@@ -68,8 +68,12 @@ export default {
   <div class="calculator">
     <div class="display">{{ current || '0' }}</div>
     <div @click="clear" class="btn">AC</div>
-    <div @click="sign" class="btn">+/–</div>
+    <div class="btn">Log</div>
+    <div class="btn">Exp</div>
     <div @click="percent" class="btn">%</div>
+    <div @click="sign" class="btn">+/–</div>
+    <div @click="append('(')" class="btn">(</div>
+    <div @click="append(')')" class="btn">)</div>
     <div @click="divide" class="btn operator">÷</div>
     <div @click="append('7')" class="btn">7</div>
     <div @click="append('8')" class="btn">8</div>
@@ -97,6 +101,7 @@ export default {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: minmax(50px, auto);
+  text-align: center;
 }
 
 .display {
