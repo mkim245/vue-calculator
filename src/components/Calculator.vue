@@ -4,7 +4,7 @@ export default {
   data() {
     return {
       previous: null,
-      current: '123',
+      current: '',
       operator: null,
       operatorClicked: false,
     }
@@ -31,6 +31,9 @@ export default {
       if (this.current.indexOf('.') === -1) {
         this.append('.');
       }
+    },
+    del() {
+      this.current = this.current.slice(0,-1);
     },
     setPrevious() {
       this.previous = this.current;
@@ -93,7 +96,8 @@ export default {
     <div @click="append('2')" class="btn">2</div>
     <div @click="append('3')" class="btn">3</div>
     <div @click="append('+'), add" class="btn operator">+</div>
-    <div @click="append('0')" class="btn zero">0</div>
+    <div @click="append('0')" class="btn">0</div>
+    <div @click="del" class="btn">Del</div>
     <div @click="dot" class="btn">.</div>
     <div @click="equal" class="btn operator">=</div>
   </div>
@@ -120,9 +124,9 @@ export default {
   text-align: right;
 }
 
-.zero {
+/* .zero {
   grid-column: 1 / 3;
-}
+} */
 
 .btn {
   background-color: #eee;
