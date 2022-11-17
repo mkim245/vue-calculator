@@ -18,7 +18,7 @@ export default {
         this.current.slice(1) : `-${this.current}`;
     },
     percent() {
-      this.current = `${parseFloat(this.current) / 100}`;
+      this.current = `${(parseFloat(this.current) / 100).toFixed(2)}`;
     },
     append(number) {
       if (this.operatorClicked) {
@@ -40,10 +40,10 @@ export default {
       this.operatorClicked = true;
     },
     logarithm() {
-      this.current = `${Math.log(this.current)}`;
+      this.current = `${Math.log(this.current).toFixed(2)}`;
     },
     exponent() {
-      this.current = `${Math.pow(this.current, 2)}`;
+      this.current = `${Math.pow(this.current, 2).toFixed(2)}`;
     },
     divide() {
       this.operator = (a, b) => a / b;
