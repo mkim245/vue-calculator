@@ -33,7 +33,7 @@ export default {
       }
     },
     del() {
-      this.current = this.current.slice(0,-1);
+      this.current = this.current.slice(0, -1);
     },
     setPrevious() {
       this.previous = this.current;
@@ -67,7 +67,7 @@ export default {
         parseFloat(this.current)
       )}`;
       this.previous = null;
-    }
+    },
   }
 }
 
@@ -129,14 +129,19 @@ export default {
 } */
 
 .btn {
+  cursor: pointer;
   background-color: #eee;
   border: 1px solid #333;
   border-radius: 30%;
   text-align: center;
 }
 
+.btn:hover {
+  background-color: rgba(255,255,255,.9);
+}
+
 .operator {
   background-color: orange;
-  color: white;
+  color: black;
 }
 </style>
