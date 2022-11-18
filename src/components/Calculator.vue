@@ -75,7 +75,10 @@ export default {
 
 <template>
   <div class="calculator">
-    <div class="display">{{ current || '0' }}</div>
+    <div class="display">{{ current || '0' }}
+    <div class="previous-operand"></div>
+    <div class="current-operand"></div>
+  </div>
     <div @click="clear" class="btn">AC</div>
     <div @click="logarithm" class="btn">Log</div>
     <div @click="exponent" class="btn">Exp</div>
@@ -115,13 +118,32 @@ export default {
 }
 
 .display {
-  grid-column: 1 / 5;
+  /* grid-column: 1 / 5; */
   grid-row: 1 / 5;
   background-color: green;
   color: white;
   font-weight: bold;
   border-radius: 5%;
   text-align: right;
+  grid-column: 1 / -1;
+  background-color: rgba(0, 0, 0, .75);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  flex-direction: column;
+  padding: 10px;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+.display .previous-operand {
+  color: rgba(255, 255, 255, .75);
+  font-size: 1.5rem;
+}
+
+.display .current-operand {
+  color: white;
+  font-size: 2.5rem;
 }
 
 /* .zero {
