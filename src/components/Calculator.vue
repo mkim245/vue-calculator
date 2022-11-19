@@ -26,10 +26,11 @@ export default {
         this.operatorClicked = false;
       }
       this.current = `${this.current}${number}`;
+      if(this.current === "00") this.current=''
     },
     dot() {
       if (this.current.indexOf('.') === -1) {
-        this.append('.');
+        this.append(this.current === '' ? '0.' : '.');
       }
     },
     del() {
