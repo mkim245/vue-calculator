@@ -45,6 +45,9 @@ export default {
     exponent() {
       this.current = `${Math.pow(this.current, 2).toFixed(2)}`;
     },
+    sqrt() {
+      this.current = `${Math.sqrt(this.current).toFixed(2)}`;
+    },
     divide() {
       this.operator = (a, b) => a / b;
       this.setPrevious();
@@ -82,10 +85,10 @@ export default {
     <div @click="clear" class="btn">AC</div>
     <div @click="logarithm" class="btn">Log</div>
     <div @click="exponent" class="btn">Exp</div>
+    <div @click="del" class="btn">Del</div>
     <div @click="percent" class="btn">%</div>
     <div @click="sign" class="btn">+/–</div>
-    <div @click="append('(')" class="btn">(</div>
-    <div @click="append(')')" class="btn">)</div>
+    <div @click="sqrt" class="btn">√</div>
     <div @click="divide" class="btn operator">÷</div>
     <div @click="append('7')" class="btn">7</div>
     <div @click="append('8')" class="btn">8</div>
@@ -100,7 +103,7 @@ export default {
     <div @click="append('3')" class="btn">3</div>
     <div @click="add" class="btn operator">+</div>
     <div @click="append('0')" class="btn">0</div>
-    <div @click="del" class="btn">Del</div>
+    <div @click="append('00')" class="btn">00</div>
     <div @click="dot" class="btn">.</div>
     <div @click="equal" class="btn operator">=</div>
   </div>
