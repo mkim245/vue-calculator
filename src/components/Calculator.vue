@@ -68,7 +68,7 @@ export default {
       this.current = `${this.operator(
         parseFloat(this.previous),
         parseFloat(this.current)
-      ).toFixed(2)}`;
+      ).toFixed((this.previous/this.current) % 1 === 0 && (this.previous*this.current) % 1 === 0 ? 0 : 2)}`;
       this.previous = null;
     },
   }
