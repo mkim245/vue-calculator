@@ -65,7 +65,7 @@ export default {
       this.current = `${this.operator(
         parseFloat(this.previous),
         parseFloat(this.current)
-      )}`;
+      ).toFixed(2)}`;
       this.previous = null;
     },
   }
@@ -75,10 +75,10 @@ export default {
 
 <template>
   <div class="calculator">
-    <div class="display">{{ current || '0' }}
-    <div class="previous-operand"></div>
-    <div class="current-operand"></div>
-  </div>
+    <div class="display">
+      <div class="previous-operand">{{previous}}</div>
+      <div class="current-operand">{{ current || '0' }}</div>
+    </div>
     <div @click="clear" class="btn">AC</div>
     <div @click="logarithm" class="btn">Log</div>
     <div @click="exponent" class="btn">Exp</div>
@@ -86,19 +86,19 @@ export default {
     <div @click="sign" class="btn">+/–</div>
     <div @click="append('(')" class="btn">(</div>
     <div @click="append(')')" class="btn">)</div>
-    <div @click="append('÷'), divide" class="btn operator">÷</div>
+    <div @click="divide" class="btn operator">÷</div>
     <div @click="append('7')" class="btn">7</div>
     <div @click="append('8')" class="btn">8</div>
     <div @click="append('9')" class="btn">9</div>
-    <div @click="append('x'), multiply" class="btn operator">x</div>
+    <div @click="multiply" class="btn operator">x</div>
     <div @click="append('4')" class="btn">4</div>
     <div @click="append('5')" class="btn">5</div>
     <div @click="append('6')" class="btn">6</div>
-    <div @click="append('-'), subtract" class="btn operator">–</div>
+    <div @click="subtract" class="btn operator">–</div>
     <div @click="append('1')" class="btn">1</div>
     <div @click="append('2')" class="btn">2</div>
     <div @click="append('3')" class="btn">3</div>
-    <div @click="append('+'), add" class="btn operator">+</div>
+    <div @click="add" class="btn operator">+</div>
     <div @click="append('0')" class="btn">0</div>
     <div @click="del" class="btn">Del</div>
     <div @click="dot" class="btn">.</div>
@@ -118,13 +118,9 @@ export default {
 }
 
 .display {
-  /* grid-column: 1 / 5; */
   grid-row: 1 / 5;
-  background-color: green;
   color: white;
-  font-weight: bold;
   border-radius: 5%;
-  text-align: right;
   grid-column: 1 / -1;
   background-color: rgba(0, 0, 0, .75);
   display: flex;
@@ -146,10 +142,6 @@ export default {
   font-size: 2.5rem;
 }
 
-/* .zero {
-  grid-column: 1 / 3;
-} */
-
 .btn {
   cursor: pointer;
   background-color: #eee;
@@ -159,7 +151,7 @@ export default {
 }
 
 .btn:hover {
-  background-color: rgba(255,255,255,.9);
+  background-color: rgba(255, 255, 255, .9);
 }
 
 .operator {
