@@ -26,7 +26,7 @@ export default {
         this.operatorClicked = false;
       }
       this.current = `${this.current}${number}`;
-      if(this.current === "00") this.current=''
+      if (this.current === "00") this.current = ''
     },
     dot() {
       if (this.current.indexOf('.') === -1) {
@@ -73,18 +73,21 @@ export default {
       this.current = `${this.operator(
         parseFloat(this.previous),
         parseFloat(this.current)
-      ).toFixed((this.previous/this.current) % 1 === 0 && (this.previous*this.current) % 1 === 0 ? 0 : 2)}`;
+      ).toFixed((!this.previous.includes(".") && !this.current.includes("."))
+        ? (this.divide && (parseFloat(this.previous) / parseFloat(this.current)) % 1 === 0)
+          ? 0 : 2 : 2)}`;
       this.previous = null;
     },
   }
 }
+
 
 </script>
 
 <template>
   <div class="calculator">
     <div class="display">
-      <div class="previous-operand">{{previous}}</div>
+      <div class="previous-operand">{{ previous }}</div>
       <div class="current-operand">{{ current || '0' }}</div>
     </div>
     <div @click="clear" class="btn">AC</div>
