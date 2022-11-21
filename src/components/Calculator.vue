@@ -19,7 +19,6 @@ export default {
     },
     percent() {
       this.current = this.current  === '' ? '' : `${(parseFloat(this.current) / 100).toFixed(2)}`;
-      // this.current = parseFloat(this.current) === '3' ? '0' : 'try again';
     },
     append(number) {
       if (this.operatorClicked) {
@@ -28,10 +27,11 @@ export default {
       }
       this.current = `${this.current}${number}`;
       if (this.current === "00") this.current = ''  //prevent double zero from being in front
+      if (this.current === '-00') this.current = '-'
       if (this.current === "0") this.current = ''   //prevent zero from being in front
     },
     dot() {
-      if (this.current.indexOf('.') === -1 && this.current.charAt(0) !== '-') {
+      if (this.current.indexOf('.') === -1 && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '' )) {
         this.append(this.current === '' ? '0.' : '.');
       }
     },
