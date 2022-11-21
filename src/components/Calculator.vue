@@ -18,7 +18,7 @@ export default {
         this.current.slice(1) : `-${this.current}`;
     },
     percent() {
-      this.current = this.current  === '' ? '' : `${(parseFloat(this.current) / 100).toFixed(2)}`;
+      this.current = this.current.charAt(0) !== '' && this.current.charAt(0) !== '-'? `${(parseFloat(this.current) / 100).toFixed(2)}` : '';
     },
     append(number) {
       if (this.operatorClicked) {
@@ -43,13 +43,13 @@ export default {
       this.operatorClicked = true;
     },
     logarithm() {
-      this.current = this.current.charAt(0) !== '' ? `${Math.log(this.current).toFixed(2)}` : '';
+      this.current = this.current.charAt(0) !== '' && this.current.charAt(0) !== '-'? `${Math.log(this.current).toFixed(2)}` : '';
     },
     exponent() {
-      this.current = this.current.charAt(0) !== '' ? `${Math.pow(this.current, 2).toFixed(2)}` : '';
+      this.current = this.current.charAt(0) !== '' && this.current.charAt(0) !== '-'? `${Math.pow(this.current, 2).toFixed(2)}` : '';
     },
     sqrt() {
-      this.current = this.current.charAt(0) !== '' ? `${Math.sqrt(this.current).toFixed(2)}` : '';
+      this.current = this.current.charAt(0) !== '' && this.current.charAt(0) !== '-'? `${Math.sqrt(this.current).toFixed(2)}` : '';
     },
     divide() {
       this.current.charAt(0) !== '' ? this.append('÷') : this.append('') 
