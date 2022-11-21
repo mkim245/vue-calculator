@@ -43,13 +43,13 @@ export default {
       this.operatorClicked = true;
     },
     logarithm() {
-      this.current = `${Math.log(this.current).toFixed(2)}`;
+      this.current = this.current.charAt(0) !== '' ? `${Math.log(this.current).toFixed(2)}` : '';
     },
     exponent() {
-      this.current = `${Math.pow(this.current, 2).toFixed(2)}`;
+      this.current = this.current.charAt(0) !== '' ? `${Math.pow(this.current, 2).toFixed(2)}` : '';
     },
     sqrt() {
-      this.current = `${Math.sqrt(this.current).toFixed(2)}`;
+      this.current = this.current.charAt(0) !== '' ? `${Math.sqrt(this.current).toFixed(2)}` : '';
     },
     divide() {
       this.current.charAt(0) !== '' ? this.append('÷') : this.append('') 
