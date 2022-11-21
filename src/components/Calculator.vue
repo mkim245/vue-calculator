@@ -52,22 +52,22 @@ export default {
       this.current = `${Math.sqrt(this.current).toFixed(2)}`;
     },
     divide() {
-      this.append('÷')
+      this.current.charAt(0) !== '' ? this.append('÷') : this.append('') 
       this.operator = (a, b) => a / b;
       this.setPrevious();
     },
     multiply() {
-      this.append('x')
+      this.current.charAt(0) !== '' ? this.append('x') : this.append('') 
       this.operator = (a, b) => a * b;
       this.setPrevious();
     },
     add() {
-      this.append('+')
+      this.current.charAt(0) !== '' ? this.append('+') : this.append('') 
       this.operator = (a, b) => a + b;
       this.setPrevious();
     },
     subtract() {
-      this.append('-')
+      this.current.charAt(0) !== '' ? this.append('-') : this.append('') 
       this.operator = (a, b) => a - b;
       this.setPrevious();
     },
