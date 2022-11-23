@@ -7,6 +7,7 @@ export default {
       current: '',
       operator: null,
       operatorClicked: false,
+      newcal: false,
     }
   },
   methods: {
@@ -25,7 +26,9 @@ export default {
         this.current = '';
         this.operatorClicked = false;
       }
-      this.current = `${this.current}${number}`;
+      this.current = (this.newcal)
+        ? (this.current = '', this.newcal = false, `${this.current}${number}`)
+        : `${this.current}${number}`;
       if (this.current === "00") this.current = '';  //prevent double zero from being in front
       if (this.current === '-00') this.current = '-';
       if (this.current === "0") this.current = '';   //prevent zero from being in front
@@ -107,6 +110,7 @@ export default {
         ? (this.divide && (parseFloat(this.previous) / parseFloat(this.current)) % 1 === 0)
           ? 0 : 4 : 4))}`;
       this.previous = null;
+      this.newcal = true;
     },
   }
 }
@@ -126,11 +130,11 @@ export default {
     <div @click="percent" class="btn">%</div>
     <div @click="sign" class="btn">+/–</div>
     <div @click="sqrt" class="btn">√</div>
-    <div @click="divide" class="btn operator">÷</div>
+    <div @click="divide" class="btn operator">&divide;</div>
     <div @click="append('7')" class="btn">7</div>
     <div @click="append('8')" class="btn">8</div>
     <div @click="append('9')" class="btn">9</div>
-    <div @click="multiply" class="btn operator">x</div>
+    <div @click="multiply" class="btn operator">&times;</div>
     <div @click="append('4')" class="btn">4</div>
     <div @click="append('5')" class="btn">5</div>
     <div @click="append('6')" class="btn">6</div>
