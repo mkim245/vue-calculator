@@ -18,7 +18,7 @@ export default {
         this.current.slice(1) : `-${this.current}`;
     },
     percent() {
-      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? `${(parseFloat(this.current) / 100).toFixed(2)}` : '';
+      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? `${(parseFloat(parseFloat(this.current) / 100).toFixed(4))}` : '';
     },
     append(number) {
       if (this.operatorClicked) {
@@ -43,13 +43,13 @@ export default {
       this.operatorClicked = true;
     },
     logarithm() {
-      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? `${Math.log(this.current).toFixed(2)}` : '';
+      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? `${parseFloat(Math.log(this.current).toFixed(4))}` : '';
     },
     exponent() {
-      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? `${Math.pow(this.current, 2).toFixed(2)}` : '';
+      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? `${parseFloat(Math.pow(this.current, 2).toFixed(4))}` : '';
     },
     sqrt() {
-      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? `${Math.sqrt(this.current).toFixed(2)}` : '';
+      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? `${parseFloat(Math.sqrt(this.current).toFixed(4))}` : '';
     },
     divide() {
       this.current.charAt(0) !== ''
@@ -100,12 +100,12 @@ export default {
       this.setPrevious();
     },
     equal() {
-      this.current = `${this.operator(
+      this.current = `${parseFloat(this.operator(
         parseFloat(this.previous),
         parseFloat(this.current)
       ).toFixed((!this.previous.includes(".") && !this.current.includes("."))
         ? (this.divide && (parseFloat(this.previous) / parseFloat(this.current)) % 1 === 0)
-          ? 0 : 2 : 2)}`;
+          ? 0 : 4 : 4))}`;
       this.previous = null;
     },
   }
