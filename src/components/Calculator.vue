@@ -26,9 +26,10 @@ export default {
         this.current = '';
         this.operatorClicked = false;
       }
+      console.log("this.operator", number)
       this.current = (this.newcal)
-        ? (number === this.operator)
-          ? `${this.current}${number}`
+        ? (number.includes('+') || number.includes('-') || number.includes('÷') || number.includes('x'))
+          ? (`${this.current}${number}`)
           : (this.current = '', this.newcal = false, `${this.current}${number}`)
         : `${this.current}${number}`;
       if (this.current === "00") this.current = '';  //prevent double zero from being in front
