@@ -27,7 +27,9 @@ export default {
         this.operatorClicked = false;
       }
       this.current = (this.newcal)
-        ? (this.current = '', this.newcal = false, `${this.current}${number}`)
+        ? (number === this.operator)
+          ? `${this.current}${number}`
+          : (this.current = '', this.newcal = false, `${this.current}${number}`)
         : `${this.current}${number}`;
       if (this.current === "00") this.current = '';  //prevent double zero from being in front
       if (this.current === '-00') this.current = '-';
