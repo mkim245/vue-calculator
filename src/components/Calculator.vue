@@ -12,7 +12,8 @@ export default {
   },
   methods: {
     clear() {
-      this.current = '';
+      this.current = '0';
+      this.newcal = false;
     },
     sign() {
       this.current = this.current.charAt(0) === '-' ?
@@ -26,16 +27,14 @@ export default {
         this.current = '';
         this.operatorClicked = false;
       }
-      if(this.current.charAt(0) !== '0') {
-        this.current = (this.newcal)
-        ? (number.includes('+') || number.includes('-') || number.includes('÷') || number.includes('x'))
-        ? (`${this.current}${number}`)
-        : (this.current = '', this.newcal = false, `${this.current}${number}`)
-        : `${this.current}${number}`;
-      }
-      if (this.current.charAt(0) === '0') { //맨앞이 0이고 소수점이 아니면 뒤숫자에 더해지지 않도록 한다. 0123. 
-        this.current = number === '.' ? `${this.current}${number}` : this.current.includes('.') ? `${this.current}${number}` : `${number}`
-      }
+
+        this.current = (this.newcal) // new calculation starts
+          ? (number === '+' || number === '-' || number === '÷' || number === 'x') // operators are clicked
+            ? (`${this.current}${number}`) // the operators added to the current
+            : (this.current = '', this.newcal = false, `${this.current}${number}`) // when numeric value is clicked, new number alone is shown
+          : (this.current === '0' && number !== '.') 
+          ? number === '.' ? `${this.current}${number}` : `${number}` : `${this.current}${number}`; // if not new calculation i.e. when program starts, input value is added to the current
+
       if (this.current === "00") this.current = '';  //prevent double zero from being in front
       if (this.current === '-00') this.current = '-';
     },
