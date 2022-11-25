@@ -26,16 +26,20 @@ export default {
         this.current = '';
         this.operatorClicked = false;
       }
-      console.log("this.operator", number)
-      this.current = (this.newcal)
+      if(this.current.charAt(0) !== '0') {
+        this.current = (this.newcal)
         ? (number.includes('+') || number.includes('-') || number.includes('÷') || number.includes('x'))
-          ? (`${this.current}${number}`)
-          : (this.current = '', this.newcal = false, `${this.current}${number}`)
+        ? (`${this.current}${number}`)
+        : (this.current = '', this.newcal = false, `${this.current}${number}`)
         : `${this.current}${number}`;
+      }
+      if (this.current.charAt(0) === '0') { //맨앞이 0이고 소수점이 아니면 뒤숫자에 더해지지 않도록 한다. 0123. 
+        this.current = number === '.' ? `${this.current}${number}` : this.current.includes('.') ? `${this.current}${number}` : `${number}`
+      }
       if (this.current === "00") this.current = '';  //prevent double zero from being in front
       if (this.current === '-00') this.current = '-';
-      if (this.current === "0") this.current = '';   //prevent zero from being in front
     },
+
     dot() {
       if (this.current.indexOf('.') === -1 && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '')) {
         this.append(this.current === '' ? '0.' : '.');
@@ -124,7 +128,7 @@ export default {
   <div class="calculator">
     <div class="display">
       <div class="previous-operand">{{ previous }}</div>
-      <div class="current-operand">{{ current || 'Enter Your Number' }}</div>
+      <div class="current-operand">{{ current || '0' }}</div>
     </div>
     <div @click="clear" class="btn">AC</div>
     <div @click="logarithm" class="btn">Log</div>
