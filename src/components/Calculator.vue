@@ -4,7 +4,7 @@ export default {
   data() {
     return {
       previous: null,
-      current: '',
+      current: '0',
       operator: null,
       operatorClicked: false,
       newcal: false,
@@ -28,12 +28,15 @@ export default {
         this.operatorClicked = false;
       }
 
-        this.current = (this.newcal) // new calculation starts
-          ? (number === '+' || number === '-' || number === '÷' || number === 'x') // operators are clicked
-            ? (`${this.current}${number}`) // the operators added to the current
-            : (this.current = '', this.newcal = false, `${this.current}${number}`) // when numeric value is clicked, new number alone is shown
-          : (this.current === '0' && number !== '.') 
-          ? number === '.' ? `${this.current}${number}` : `${number}` : `${this.current}${number}`; // if not new calculation i.e. when program starts, input value is added to the current
+      this.current = (this.newcal) // new calculation starts
+        ? (number === '+' || number === '-' || number === '÷' || number === 'x') // operators are clicked
+          ? (`${this.current}${number}`) // the operators added to the current
+          : (this.current = '', this.newcal = false, `${this.current}${number}`) // when numeric value is clicked, new number alone is shown
+        : (this.current === '0' && number !== '.' && number !== '+' && number !== '-' && number !== '÷' && number !== 'x') // when the current is zero and takes new numbers except for dot 
+          ? (number === '.'
+            ? `${this.current}${number}`
+            : `${number}`)
+          : `${this.current}${number}`; // if not new calculation i.e. when program starts, input value is added to the current
 
       if (this.current === "00") this.current = '';  //prevent double zero from being in front
       if (this.current === '-00') this.current = '-';
