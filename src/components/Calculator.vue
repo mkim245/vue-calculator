@@ -27,21 +27,18 @@ export default {
         this.current = '';
         this.operatorClicked = false;
       }
-
+      console.log("number", number);
       this.current = (this.newcal) // new calculation starts
         ? (number === '+' || number === '-' || number === '÷' || number === 'x') // operators are clicked
           ? (`${this.current}${number}`) // the operators added to the current
           : (this.current = '', this.newcal = false, `${this.current}${number}`) // when numeric value is clicked, new number alone is shown
         : (this.current === '0' && number !== '.' && number !== '+' && number !== '-' && number !== '÷' && number !== 'x') // when the current is zero and takes new numbers except for dot 
-          ? (number === '.'
-            ? `${this.current}${number}`
-            : `${number}`)
+          ? (number === '.' ? `${this.current}${number}` : `${number}`)
           : `${this.current}${number}`; // if not new calculation i.e. when program starts, input value is added to the current
 
       if (this.current === "00") this.current = '';  //prevent double zero from being in front
       if (this.current === '-00') this.current = '-';
     },
-
     dot() {
       if (this.current.indexOf('.') === -1 && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '')) {
         this.append(this.current === '' ? '0.' : '.');
@@ -64,50 +61,42 @@ export default {
       this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? `${parseFloat(Math.sqrt(this.current).toFixed(4))}` : '';
     },
     divide() {
-      this.current.charAt(0) !== ''
-        ? this.append(
-          !this.current.includes('÷') &&
-            !this.current.includes('x') &&
-            !this.current.includes('+') &&
-            !this.current.includes('-')
-            ? '÷' : this.current.operator = null)
-        : this.append('')
+      this.append(
+        !this.current.includes('÷') &&
+          !this.current.includes('x') &&
+          !this.current.includes('+') ||
+          this.current.charAt(0) === '-' // minus in front is okay
+          ? '÷' : this.current.operator = null)
       this.operator = (a, b) => a / b;
       this.setPrevious();
     },
     multiply() {
-      this.current.charAt(0) !== ''
-        ? this.append(
-          !this.current.includes('÷') &&
-            !this.current.includes('x') &&
-            !this.current.includes('+') &&
-            !this.current.includes('-')
-            ? 'x' : this.current.operator = null)
-        : this.append('')
+      this.append(
+        !this.current.includes('÷') &&
+          !this.current.includes('x') &&
+          !this.current.includes('+') ||
+          this.current.charAt(0) === '-'
+          ? 'x' : this.current.operator = null)
       this.operator = (a, b) => a * b;
       this.setPrevious();
     },
     add() {
-      this.current.charAt(0) !== ''
-        ? this.append(
-          !this.current.includes('÷') &&
-            !this.current.includes('x') &&
-            !this.current.includes('+') &&
-            !this.current.includes('-')
-            ? '+' : this.current.operator = null)
-        : this.append('')
+      this.append(
+        !this.current.includes('÷') &&
+          !this.current.includes('x') &&
+          !this.current.includes('+') ||
+          this.current.charAt(0) === '-'
+          ? '+' : this.current.operator = null)
       this.operator = (a, b) => a + b;
       this.setPrevious();
     },
     subtract() {
-      this.current.charAt(0) !== ''
-        ? this.append(
-          !this.current.includes('÷') &&
-            !this.current.includes('x') &&
-            !this.current.includes('+') &&
-            !this.current.includes('-')
-            ? '-' : this.current.operator = null)
-        : this.append('')
+      this.append(
+        !this.current.includes('÷') &&
+          !this.current.includes('x') &&
+          !this.current.includes('+') ||
+          this.current.charAt(0) === '-'
+          ? '-' : this.current.operator = null)
       this.operator = (a, b) => a - b;
       this.setPrevious();
     },
