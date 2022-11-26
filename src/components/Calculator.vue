@@ -16,8 +16,9 @@ export default {
       this.newcal = false;
     },
     sign() {
-      this.current = this.current.charAt(0) === '-' ?
-        this.current.slice(1) : `-${this.current}`;
+      this.current = (!this.current.includes('+') && !this.current.includes('x') && !this.current.includes('÷') && this.current.charAt(this.current.length-1) !== '-')
+        ? this.current.charAt(0) === '-' ? this.current.slice(1) : `-${this.current}`
+        : !this.sign();
     },
     percent() {
       this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? `${(parseFloat(parseFloat(this.current) / 100).toFixed(4))}` : '';
