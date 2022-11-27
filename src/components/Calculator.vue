@@ -21,6 +21,7 @@ export default {
         : !this.sign();
     },
     percent() {
+
       this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? `${(parseFloat(parseFloat(this.current) / 100).toFixed(4))}` : '';
     },
     append(number) {
@@ -33,7 +34,7 @@ export default {
         ? (number === '+' || number === '-' || number === '÷' || number === 'x') // operators are clicked
           ? (`${this.current}${number}`) // the operators added to the current
           : (this.current = '', this.newcal = false, `${this.current}${number}`) // when numeric value is clicked, new number alone is shown
-        : (this.current === '0' && number !== '.' && number !== '+' && number !== '-' && number !== '÷' && number !== 'x') // when the current is zero and takes new numbers except for dot 
+        : (this.current === '0' || this.current === '-0' && number !== '.' && number !== '+' && number !== '-' && number !== '÷' && number !== 'x') // when the current is zero and takes new numbers except for dot 
           ? (number === '.' ? `${this.current}${number}` : `${number}`)
           : `${this.current}${number}`; // if not new calculation i.e. when program starts, input value is added to the current
 
