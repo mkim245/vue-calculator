@@ -21,18 +21,17 @@ export default {
         : !this.sign();
     },
     percent() {
-
       this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? `${(parseFloat(parseFloat(this.current) / 100).toFixed(4))}` : '';
     },
     append(number) {
       if (this.operatorClicked) {
-        this.current = '';
+        // this.current = ''; // this caused (5+ =10 then click + shows + only)
         this.operatorClicked = false;
       }
       this.current = (this.newcal) // new calculation starts
         ? (number === '+' || number === '-' || number === '÷' || number === 'x') // operators are clicked
           ? (`${this.current}${number}`) // the operators added to the current
-          : (this.current = '', this.newcal = false, `${this.current}${number}`) // when numeric value is clicked, new number alone is shown
+          : (this.newcal = false, `${number}`) // when numeric value is clicked, new number alone is shown
         : ((this.current === '0' || this.current === '-0') && number !== '.' && number !== '+' && number !== '-' && number !== '÷' && number !== 'x') // when the current is zero and takes new numbers except for dot 
           ? (number === '.' ? `${this.current}${number}` : `${number}`)
           : `${this.current}${number}`; // if not new calculation i.e. when program starts, input value is added to the current
@@ -66,7 +65,6 @@ export default {
           !this.current.includes('x') &&
           !this.current.includes('+') &&
           this.current.charAt(this.current.length - 1) !== '-'
-          // this.current.charAt(0) === '-' // minus in front is okay
           ? '÷' : this.current.operator = null)
       this.operator = (a, b) => a / b;
       this.setPrevious();
