@@ -16,7 +16,7 @@ export default {
       this.newcal = false;
     },
     sign() {
-      this.current = (!this.current.includes('+') && !this.current.includes('x') && !this.current.includes('÷') && this.current.charAt(this.current.length-1) !== '-')
+      this.current = (!this.current.includes('+') && !this.current.includes('x') && !this.current.includes('÷') && this.current.charAt(this.current.length - 1) !== '-')
         ? this.current.charAt(0) === '-' ? this.current.slice(1) : `-${this.current}`
         : !this.sign();
     },
@@ -29,15 +29,13 @@ export default {
         this.current = '';
         this.operatorClicked = false;
       }
-      console.log("number", number);
       this.current = (this.newcal) // new calculation starts
         ? (number === '+' || number === '-' || number === '÷' || number === 'x') // operators are clicked
           ? (`${this.current}${number}`) // the operators added to the current
           : (this.current = '', this.newcal = false, `${this.current}${number}`) // when numeric value is clicked, new number alone is shown
-        : (this.current === '0' || this.current === '-0' && number !== '.' && number !== '+' && number !== '-' && number !== '÷' && number !== 'x') // when the current is zero and takes new numbers except for dot 
+        : ((this.current === '0' || this.current === '-0') && number !== '.' && number !== '+' && number !== '-' && number !== '÷' && number !== 'x') // when the current is zero and takes new numbers except for dot 
           ? (number === '.' ? `${this.current}${number}` : `${number}`)
           : `${this.current}${number}`; // if not new calculation i.e. when program starts, input value is added to the current
-
       if (this.current === "00") this.current = '';  //prevent double zero from being in front
       if (this.current === '-00') this.current = '-';
     },
@@ -66,8 +64,9 @@ export default {
       this.append(
         !this.current.includes('÷') &&
           !this.current.includes('x') &&
-          !this.current.includes('+') ||
-          this.current.charAt(0) === '-' // minus in front is okay
+          !this.current.includes('+') &&
+          this.current.charAt(this.current.length - 1) !== '-'
+          // this.current.charAt(0) === '-' // minus in front is okay
           ? '÷' : this.current.operator = null)
       this.operator = (a, b) => a / b;
       this.setPrevious();
@@ -76,8 +75,8 @@ export default {
       this.append(
         !this.current.includes('÷') &&
           !this.current.includes('x') &&
-          !this.current.includes('+') ||
-          this.current.charAt(0) === '-'
+          !this.current.includes('+') &&
+          this.current.charAt(this.current.length - 1) !== '-'
           ? 'x' : this.current.operator = null)
       this.operator = (a, b) => a * b;
       this.setPrevious();
@@ -86,8 +85,8 @@ export default {
       this.append(
         !this.current.includes('÷') &&
           !this.current.includes('x') &&
-          !this.current.includes('+') ||
-          this.current.charAt(0) === '-'
+          !this.current.includes('+') &&
+          this.current.charAt(this.current.length - 1) !== '-'
           ? '+' : this.current.operator = null)
       this.operator = (a, b) => a + b;
       this.setPrevious();
@@ -96,8 +95,8 @@ export default {
       this.append(
         !this.current.includes('÷') &&
           !this.current.includes('x') &&
-          !this.current.includes('+') ||
-          this.current.charAt(0) === '-'
+          !this.current.includes('+') &&
+          this.current.charAt(this.current.length - 1) !== '-'
           ? '-' : this.current.operator = null)
       this.operator = (a, b) => a - b;
       this.setPrevious();
