@@ -25,7 +25,8 @@ export default {
     },
     append(number) {
       if (this.operatorClicked) {
-        // this.current = ''; // this caused (5+ =10 then click + shows + only)
+        this.current = (number === '+' || number === '-' || number === '÷' || number === 'x') ?
+        `${this.current}` : '';
         this.operatorClicked = false;
       }
       this.current = (this.newcal) // new calculation starts
