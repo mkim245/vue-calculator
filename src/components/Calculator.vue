@@ -60,8 +60,11 @@ export default {
     sqrt() {
       this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? `${parseFloat(Math.sqrt(this.current).toFixed(4))}` : '';
     },
-    reciprocal(){
+    reciprocal() {
       this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? (1/`${(parseFloat(this.current))}`).toFixed(4) : '';
+    },
+    cubicX() {
+      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? (`${(parseFloat(this.current))}`*`${(parseFloat(this.current))}`*`${(parseFloat(this.current))}`).toFixed(2) : '';
     },
     divide() {
       this.append(
@@ -129,9 +132,9 @@ export default {
     <div @click="exponent" class="btn">Exp</div>
     <div @click="del" class="btn">Del</div>
     <div @click="reciprocal" class="btn">1/x</div>
-    <div @click="cubit" class="btn">x&#179</div>
+    <div @click="cubicX" class="btn">x&#179</div>
     <div @click="factorial" class="btn">n!</div>
-    <div @click="naturale" class="btn">e</div>
+    <div @click="naturalE" class="btn">e</div>
     <div @click="percent" class="btn">%</div>
     <div @click="sign" class="btn">+/–</div>
     <div @click="sqrt" class="btn">√</div>
