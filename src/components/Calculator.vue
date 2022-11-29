@@ -66,6 +66,19 @@ export default {
     cubicX() {
       this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? (`${(parseFloat(this.current))}`*`${(parseFloat(this.current))}`*`${(parseFloat(this.current))}`).toFixed(2) : '';
     },
+    factorialCal(n) {
+      let outcome = 1;
+      for (let i = 1; i <= n; i++) {
+        outcome *= i;
+      }
+      return outcome;
+    },
+    factorial() {
+      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? `${this.factorialCal(parseFloat(this.current)).toFixed(0)}` : '';
+    },
+    naturalE() {
+      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? '2.71828' : '';
+    },
     divide() {
       this.append(
         !this.current.includes('÷') &&
