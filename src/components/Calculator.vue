@@ -60,6 +60,9 @@ export default {
     sqrt() {
       this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? `${parseFloat(Math.sqrt(this.current).toFixed(4))}` : '';
     },
+    reciprocal(){
+      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? (1/`${(parseFloat(this.current))}`).toFixed(4) : '';
+    },
     divide() {
       this.append(
         !this.current.includes('÷') &&
@@ -125,6 +128,10 @@ export default {
     <div @click="logarithm" class="btn">Log</div>
     <div @click="exponent" class="btn">Exp</div>
     <div @click="del" class="btn">Del</div>
+    <div @click="reciprocal" class="btn">1/x</div>
+    <div @click="cubit" class="btn">x&#179</div>
+    <div @click="factorial" class="btn">n!</div>
+    <div @click="naturale" class="btn">e</div>
     <div @click="percent" class="btn">%</div>
     <div @click="sign" class="btn">+/–</div>
     <div @click="sqrt" class="btn">√</div>
