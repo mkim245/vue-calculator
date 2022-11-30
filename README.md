@@ -1,35 +1,40 @@
 # vue-calculator
 
-This template should help get you started developing with Vue 3 in Vite.
+Single page Vue application calculator. This project was carried out to make an advanced calculator with the addition of new features to a simple calculator project (https://github.com/codyseibert/vue-calculator)
 
-## Recommended IDE Setup
+## User Instruction
+### Basic keys
+  - It has eleven number keys : 0, 00, 1, 2, 3, 4, 5, 6, 7, 8, 9
+  - It has four operator keys : +, -, x, ÷, =
+  - It has preset function keys : logarithm(Log), exponent(Exp), cubed(n&#179), reciprocal(1/n), square root(√), factorial(n!), percent(%), base of the natural logarithm(2), change of postive and negative sign(+/-), decimal(.)
+  - It has editing keys : delete(DEL), clear(AC)
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+### key features
+  - double layers are used to show operands and operators
+  - press number -> operator -> number -> equal, display result (1 + 1 = 2)
+  - press number -> operator -> equal, display result (10 + = 20)
+  - press number -> preset function key, display result (2 % 0.02)
+  - press operator in the presence of displayed result to continue calcuation (1 + 1 = 2 + 3 = 5)
+  - press number in the presence of displayed result to start a new calcuation
 
-## Customize configuration
+ ## Screenshots
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+!["Initial image"](https://github.com/mkim245/vue-calculator/blob/master/public/screenshots/initial_image.PNG?raw=true)
 
-## Project Setup
+!["First Number"](https://github.com/mkim245/vue-calculator/blob/master/public/screenshots/firstNumber.PNG?raw=true)
 
-```sh
-npm install
-```
+!["Operator"](https://github.com/mkim245/vue-calculator/blob/master/public/screenshots/operator.PNG?raw=true)
 
-### Compile and Hot-Reload for Development
+!["Second Number"](https://github.com/mkim245/vue-calculator/blob/master/public/screenshots/secondNumber.PNG?raw=true)
 
-```sh
-npm run dev
-```
+!["Answer"](https://github.com/mkim245/vue-calculator/blob/master/public/screenshots/results.PNG?raw=true)
 
-### Compile and Minify for Production
 
-```sh
-npm run build
-```
+## Project Stack
 
-### Lint with [ESLint](https://eslint.org/)
+JavaScript, Vue
 
-```sh
-npm run lint
-```
+## Dependencies
+    "pinia": "^2.0.23",
+    "vue": "^3.2.41",
+    "vue-router": "^4.1.5"
