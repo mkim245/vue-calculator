@@ -5,8 +5,8 @@ Single page Vue application calculator. This project was carried out to make an 
 ## User Instruction
 ### Basic keys
   - It has eleven number keys : 0, 00, 1, 2, 3, 4, 5, 6, 7, 8, 9
-  - It has four operator keys : +, -, x, ÷, =
-  - It has preset function keys : logarithm(Log), exponent(Exp), cubed(n&#179), reciprocal(1/n), square root(√), factorial(n!), percent(%), base of the natural logarithm(2), change of postive and negative sign(+/-), decimal(.)
+  - It has five operator keys : +, -, x, ÷, =
+  - It has preset function keys : logarithm(Log), exponent(Exp), cubed(n³), reciprocal(1/n), square root(√), factorial(n!), percent(%), base of the natural logarithm(e), change of postive and negative sign(+/-), decimal(.)
   - It has editing keys : delete(DEL), clear(AC)
 
 ### key features
@@ -17,7 +17,7 @@ Single page Vue application calculator. This project was carried out to make an 
   - press operator in the presence of displayed result to continue calcuation (1 + 1 = 2 + 3 = 5)
   - press number in the presence of displayed result to start a new calcuation
 
- ## Screenshots
+## Screenshots
 
 !["Initial image"](https://github.com/mkim245/vue-calculator/blob/master/public/screenshots/initial_image.PNG?raw=true)
 
@@ -29,12 +29,11 @@ Single page Vue application calculator. This project was carried out to make an 
 
 !["Answer"](https://github.com/mkim245/vue-calculator/blob/master/public/screenshots/results.PNG?raw=true)
 
-
 ## Project Stack
 
-JavaScript, Vue
+  - JavaScript, Vue
 
 ## Dependencies
-    "pinia": "^2.0.23",
-    "vue": "^3.2.41",
-    "vue-router": "^4.1.5"
+  - "pinia": "^2.0.23",
+  - "vue": "^3.2.41",
+  - "vue-router": "^4.1.5"
