@@ -64,6 +64,10 @@ export default {
       this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? `${parseFloat(Math.sqrt(this.current).toFixed(4))}` : '';
       this.newcal = true;
     },
+    cubert() {
+      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? `${parseFloat(Math.cbrt(this.current).toFixed(4))}` : '';
+      this.newcal = true;
+    },
     reciprocal() {
       this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? (1/`${(parseFloat(this.current))}`).toFixed(4) : '';
       this.newcal = true;
@@ -74,6 +78,10 @@ export default {
     },
     cubicX() {
       this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? (`${(parseFloat(this.current))}`*`${(parseFloat(this.current))}`*`${(parseFloat(this.current))}`).toFixed(2) : '';
+      this.newcal = true;
+    },
+    tenpower() {
+      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? `${parseFloat(Math.pow(10, this.current).toFixed(4))}` : '';
       this.newcal = true;
     },
     factorialCal(n) {
@@ -166,7 +174,7 @@ export default {
     <div @click="factorial" class="btn function">n!</div>
     <div @click="pi" class="btn function">π</div>
     <div @click="naturalE" class="btn function">e</div>
-    <div @click="ten2" class="btn function">10<sup>n</sup></div>
+    <div @click="tenpower" class="btn function">10<sup>n</sup></div>
     <div @click="percent" class="btn function">%</div>
     <div @click="sign" class="btn function">+/–</div>
     <div @click="sqrt" class="btn function">&sup2√</div>
