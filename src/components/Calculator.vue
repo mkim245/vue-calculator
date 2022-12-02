@@ -153,12 +153,16 @@ export default {
     <div @click="exponent" class="btn function">Exp</div>
     <div @click="del" class="btn function">Del</div>
     <div @click="reciprocal" class="btn function">1/n</div>
+    <div @click="power2" class="btn function">n&sup2</div>
     <div @click="cubicX" class="btn function">n&#179</div>
     <div @click="factorial" class="btn function">n!</div>
+    <div @click="pi" class="btn function">π</div>
     <div @click="naturalE" class="btn function">e</div>
+    <div @click="ten2" class="btn function">10<sup>n</sup></div>
     <div @click="percent" class="btn function">%</div>
     <div @click="sign" class="btn function">+/–</div>
-    <div @click="sqrt" class="btn function">√</div>
+    <div @click="sqrt" class="btn function">&sup2√</div>
+    <div @click="cubert" class="btn function">&#179√</div>
     <div @click="divide" class="btn operator">&divide;</div>
     <div @click="append('7')" class="btn">7</div>
     <div @click="append('8')" class="btn">8</div>
