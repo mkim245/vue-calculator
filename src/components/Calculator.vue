@@ -68,6 +68,10 @@ export default {
       this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? (1/`${(parseFloat(this.current))}`).toFixed(4) : '';
       this.newcal = true;
     },
+    power2() {
+      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? (`${(parseFloat(this.current))}`*`${(parseFloat(this.current))}`).toFixed(2) : '';
+      this.newcal = true;
+    },
     cubicX() {
       this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? (`${(parseFloat(this.current))}`*`${(parseFloat(this.current))}`*`${(parseFloat(this.current))}`).toFixed(2) : '';
       this.newcal = true;
@@ -85,6 +89,10 @@ export default {
     },
     naturalE() {
       this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? '2.71828' : '';
+      this.newcal = true;
+    },
+    pi() {
+      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? '3.14159' : '';
       this.newcal = true;
     },
     divide() {
