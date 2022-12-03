@@ -175,21 +175,21 @@ export default {
       <div class="previous-operand">{{ previous }}</div>
       <div class="current-operand">{{ current || '0' }}</div>
     </div>
-    <div @click="clear" class="btn function">AC</div>
-    <div @click="logarithm" class="btn function">ln</div>
-    <div @click="pow" class="btn function">x<sup>y</sup></div>
-    <div @click="del" class="btn function">del</div>
-    <div @click="reciprocal" class="btn function">1/n</div>
-    <div @click="power2" class="btn function">n&sup2</div>
-    <div @click="cubicX" class="btn function">n&#179</div>
-    <div @click="factorial" class="btn function">n!</div>
-    <div @click="pi" class="btn function">π</div>
-    <div @click="naturalE" class="btn function">e</div>
-    <div @click="tenpower" class="btn function">10<sup>n</sup></div>
-    <div @click="percent" class="btn function">%</div>
-    <div @click="sign" class="btn function">+/–</div>
-    <div @click="sqrt" class="btn function">&sup2√</div>
-    <div @click="cubert" class="btn function">&#179√</div>
+    <div @click="clear" class="btn function">&#119860&#119862</div>
+    <div @click="logarithm" class="btn function">&#119897&#119899</div>
+    <div @click="pow" class="btn function">&#119909<sup>&#119910</sup></div>
+    <div @click="del" class="btn function">&#119889&#119890&#119897</div>
+    <div @click="reciprocal" class="btn function"><i>1</i>/&#119909</div>
+    <div @click="power2" class="btn function">&#119909&sup2</div>
+    <div @click="cubicX" class="btn function">&#119909&#179</div>
+    <div @click="factorial" class="btn function">&#119909<i>!</i></div>
+    <div @click="pi" class="btn function"><i>π</i></div>
+    <div @click="naturalE" class="btn function">&#120358</div>
+    <div @click="tenpower" class="btn function">10<sup>&#119909</sup></div>
+    <div @click="percent" class="btn function"><i>%</i></div>
+    <div @click="sign" class="btn function"><i>+/–</i></div>
+    <div @click="sqrt" class="btn function"><i>&sup2√</i></div>
+    <div @click="cubert" class="btn function"><i>&#179√</i></div>
     <div @click="divide" class="btn operator">&divide;</div>
     <div @click="append('7')" class="btn">7</div>
     <div @click="append('8')" class="btn">8</div>
