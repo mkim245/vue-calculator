@@ -56,8 +56,8 @@ export default {
       this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? `${parseFloat(Math.log(this.current).toFixed(4))}` : '';
       this.newcal = true;
     },
-    exponent() {
-      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? `${parseFloat(Math.pow(this.current, 2).toFixed(4))}` : '';
+    pow(a,b) {
+      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? `${parseFloat(Math.pow(a, b).toFixed(4))}` : '';
       this.newcal = true;
     },
     sqrt() {
@@ -165,9 +165,9 @@ export default {
       <div class="current-operand">{{ current || '0' }}</div>
     </div>
     <div @click="clear" class="btn function">AC</div>
-    <div @click="logarithm" class="btn function">Log</div>
-    <div @click="exponent" class="btn function">Exp</div>
-    <div @click="del" class="btn function">Del</div>
+    <div @click="logarithm" class="btn function">ln</div>
+    <div @click="pow" class="btn function">x<sup>y</sup></div>
+    <div @click="del" class="btn function">del</div>
     <div @click="reciprocal" class="btn function">1/n</div>
     <div @click="power2" class="btn function">n&sup2</div>
     <div @click="cubicX" class="btn function">n&#179</div>
