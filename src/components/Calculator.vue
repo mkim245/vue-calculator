@@ -56,10 +56,6 @@ export default {
       this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? `${parseFloat(Math.log(this.current).toFixed(4))}` : '';
       this.newcal = true;
     },
-    pow(a,b) {
-      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? `${parseFloat(Math.pow(a, b).toFixed(4))}` : '';
-      this.newcal = true;
-    },
     sqrt() {
       this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? `${parseFloat(Math.sqrt(this.current).toFixed(4))}` : '';
       this.newcal = true;
@@ -103,8 +99,20 @@ export default {
       this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? '3.14159' : '';
       this.newcal = true;
     },
+    pow() {
+      this.append(
+        !this.current.includes('^') &&
+        !this.current.includes('÷') &&
+          !this.current.includes('x') &&
+          !this.current.includes('+') &&
+          this.current.charAt(this.current.length - 1) !== '-'
+          ? '^' : this.current.operator = null)
+      this.operator = (a, b) => Math.pow(a, b);
+      this.setPrevious();
+    },
     divide() {
       this.append(
+        !this.current.includes('^') &&
         !this.current.includes('÷') &&
           !this.current.includes('x') &&
           !this.current.includes('+') &&
@@ -115,6 +123,7 @@ export default {
     },
     multiply() {
       this.append(
+        !this.current.includes('^') &&
         !this.current.includes('÷') &&
           !this.current.includes('x') &&
           !this.current.includes('+') &&
@@ -125,6 +134,7 @@ export default {
     },
     add() {
       this.append(
+        !this.current.includes('^') &&
         !this.current.includes('÷') &&
           !this.current.includes('x') &&
           !this.current.includes('+') &&
@@ -135,6 +145,7 @@ export default {
     },
     subtract() {
       this.append(
+        !this.current.includes('^') &&
         !this.current.includes('÷') &&
           !this.current.includes('x') &&
           !this.current.includes('+') &&
@@ -166,7 +177,7 @@ export default {
     </div>
     <div @click="clear" class="btn function">AC</div>
     <div @click="logarithm" class="btn function">ln</div>
-    <div @click="pow" class="btn function">x<sup>y</sup></div>
+    <div @click="pow" class="btn operator">x<sup>y</sup></div>
     <div @click="del" class="btn function">del</div>
     <div @click="reciprocal" class="btn function">1/n</div>
     <div @click="power2" class="btn function">n&sup2</div>
