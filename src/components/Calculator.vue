@@ -26,15 +26,15 @@ export default {
     },
     append(number) {
       if (this.operatorClicked) {
-        this.current = (number === '+' || number === '-' || number === '÷' || number === 'x') ?
+        this.current = (number === '+' || number === '-' || number === '÷' || number === 'x' || number === '^') ?
         `${this.current}` : '';
         this.operatorClicked = false;
       }
       this.current = (this.newcal) // new calculation starts
-        ? (number === '+' || number === '-' || number === '÷' || number === 'x') // operators are clicked
+        ? (number === '+' || number === '-' || number === '÷' || number === 'x' || number === '^') // operators are clicked
           ? (`${this.current}${number}`) // the operators added to the current
           : (this.newcal = false, `${number}`) // when numeric value is clicked, new number alone is shown
-        : ((this.current === '0' || this.current === '-0') && number !== '.' && number !== '+' && number !== '-' && number !== '÷' && number !== 'x') // when the current is zero and takes new numbers except for dot 
+        : ((this.current === '0' || this.current === '-0') && number !== '.' && number !== '+' && number !== '-' && number !== '÷' && number !== 'x' && number !== '^') // when the current is zero and takes new numbers except for dot 
           ? (number === '.' ? `${this.current}${number}` : `${number}`)
           : `${this.current}${number}`; // if not new calculation i.e. when program starts, input value is added to the current
       if (this.current === "00") this.current = '';  //prevent double zero from being in front
@@ -177,7 +177,7 @@ export default {
     </div>
     <div @click="clear" class="btn function">AC</div>
     <div @click="logarithm" class="btn function">ln</div>
-    <div @click="pow" class="btn operator">x<sup>y</sup></div>
+    <div @click="pow" class="btn function">x<sup>y</sup></div>
     <div @click="del" class="btn function">del</div>
     <div @click="reciprocal" class="btn function">1/n</div>
     <div @click="power2" class="btn function">n&sup2</div>
