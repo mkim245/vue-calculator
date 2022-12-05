@@ -56,6 +56,10 @@ export default {
       this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? `${parseFloat(Math.log(this.current).toFixed(4))}` : '';
       this.newcal = true;
     },
+    logarithm10() {
+      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? `${parseFloat(Math.log10(this.current).toFixed(4))}` : '';
+      this.newcal = true;
+    },
     sqrt() {
       this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? `${parseFloat(Math.sqrt(this.current).toFixed(4))}` : '';
       this.newcal = true;
@@ -74,6 +78,14 @@ export default {
     },
     cubicX() {
       this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? (`${(parseFloat(this.current))}`*`${(parseFloat(this.current))}`*`${(parseFloat(this.current))}`).toFixed(2) : '';
+      this.newcal = true;
+    },
+    epowerX() {
+      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? `${parseFloat(Math.pow(2.71828, this.current).toFixed(4))}` : '';
+      this.newcal = true;
+    },
+    twopowerX() {
+      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? `${parseFloat(Math.pow(2, this.current).toFixed(4))}` : '';
       this.newcal = true;
     },
     tenpower() {
@@ -175,34 +187,37 @@ export default {
       <div class="previous-operand">{{ previous }}</div>
       <div class="current-operand">{{ current || '0' }}</div>
     </div>
-    <div @click="clear" class="btn function">&#119860&#119862</div>
-    <div @click="logarithm" class="btn function">&#119897&#119899</div>
-    <div @click="pow" class="btn function">&#119909<sup>&#119910</sup></div>
-    <div @click="del" class="btn function">&#119889&#119890&#119897</div>
-    <div @click="reciprocal" class="btn function"><i>1</i>/&#119909</div>
-    <div @click="power2" class="btn function">&#119909&sup2</div>
-    <div @click="cubicX" class="btn function">&#119909&#179</div>
-    <div @click="factorial" class="btn function">&#119909<i>!</i></div>
+    <div @click="clear" class="btn function">&#119860&#119862</div> <!--AC-->
+    <div @click="logarithm" class="btn function">&#119897&#119899</div> <!--ln-->
+    <div @click="logarithm10" class="btn function">&#119897&#119900&#119892</div> <!--log-->
+    <div @click="pow" class="btn function">&#119909<sup>&#119910</sup></div> <!--x^y-->
+    <div @click="del" class="btn function">&#119889&#119890&#119897</div> <!--del-->
     <div @click="pi" class="btn function"><i>π</i></div>
-    <div @click="naturalE" class="btn function">&#120358</div>
-    <div @click="tenpower" class="btn function">10<sup>&#119909</sup></div>
-    <div @click="percent" class="btn function"><i>%</i></div>
-    <div @click="sign" class="btn function"><i>+/–</i></div>
-    <div @click="sqrt" class="btn function"><i>&sup2√</i></div>
-    <div @click="cubert" class="btn function"><i>&#179√</i></div>
+    <div @click="naturalE" class="btn function">&#120358</div> <!--e-->
+    <div @click="epowerX" class="btn function">&#120358<sup>&#119909</sup></div> <!--e^x-->
+    <div @click="twopowerX" class="btn function">&#120804<sup>&#119909</sup></div> <!--2^x-->
+    <div @click="tenpower" class="btn function">10<sup>&#119909</sup></div> <!--10^x-->
+    <div @click="power2" class="btn function">&#119909&sup2</div> <!--x^2-->
+    <div @click="cubicX" class="btn function">&#119909&#179</div> <!--x^3-->
+    <div @click="sqrt" class="btn function"><i>&sup2√</i></div> <!--2√-->
+    <div @click="cubert" class="btn function"><i>&#179√</i></div> <!--3√-->
     <div @click="divide" class="btn operator">&divide;</div>
+    <div @click="percent" class="btn function"><i>%</i></div>
     <div @click="append('7')" class="btn">7</div>
     <div @click="append('8')" class="btn">8</div>
     <div @click="append('9')" class="btn">9</div>
     <div @click="multiply" class="btn operator">&times;</div>
+    <div @click="sign" class="btn function"><i>+/–</i></div>
     <div @click="append('4')" class="btn">4</div>
     <div @click="append('5')" class="btn">5</div>
     <div @click="append('6')" class="btn">6</div>
     <div @click="subtract" class="btn operator">–</div>
+    <div @click="factorial" class="btn function">&#119909!</div> <!--x!-->
     <div @click="append('1')" class="btn">1</div>
     <div @click="append('2')" class="btn">2</div>
     <div @click="append('3')" class="btn">3</div>
     <div @click="add" class="btn operator">+</div>
+    <div @click="reciprocal" class="btn function"><i>1</i>/&#119909</div> <!--1/x-->
     <div @click="append('0')" class="btn">0</div>
     <div @click="append('00')" class="btn">00</div>
     <div @click="dot" class="btn">.</div>
@@ -213,16 +228,16 @@ export default {
 <style scoped>
 .calculator {
   margin: 0 auto;
-  width: 400px;
+  width: 500px;
   font-size: 50px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   grid-auto-rows: minmax(50px, auto);
   text-align: center;
 }
 
 .display {
-  grid-row: 1 / 5;
+  grid-row: 1 / 6;
   color: white;
   border-radius: 5%;
   grid-column: 1 / -1;
@@ -252,6 +267,7 @@ export default {
   border: 1px solid #333;
   border-radius: 30%;
   text-align: center;
+  font-size: 3rem;
 }
 
 .btn:hover {
