@@ -261,6 +261,7 @@ export default {
 .display .previous-operand {
   color: rgba(255, 255, 255, .75);
   font-size: 1.5rem;
+  height: 10px;
 }
 
 .display .current-operand {
