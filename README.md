@@ -6,8 +6,8 @@ Single page Vue application calculator. This project was carried out to make an 
 ### Basic keys
   - It has eleven number keys : 0, 00, 1, 2, 3, 4, 5, 6, 7, 8, 9
   - It has five operator keys : +, -, x, ÷, =
-  - It has preset function keys : logarithm(Log), exponent(Exp), cubed(n³), reciprocal(1/n), square root(√), factorial(n!), percent(%), base of the natural logarithm(e), change of postive and negative sign(+/-), decimal(.)
-  - It has editing keys : delete(DEL), clear(AC)
+  - It has preset function keys : logarithm (ln), logarithm10 (log), x power y (x^y), e power x (eˣ), 2 power x (2ˣ), 10 power x (10ˣ), cubed (x³), reciprocal (1/x), square root (2√), cube root (3√), factorial (x!), percent (%), base of the natural logarithm (e), change of postive and negative sign (+/-), decimal (.)
+  - It has editing keys : delete (DEL), clear (AC)
 
 ### key features
   - double layers are used to show operands and operators
