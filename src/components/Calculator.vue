@@ -184,6 +184,7 @@ export default {
 <template>
   <div class="calculator">
     <div class="display">
+      <div class="title">{{ "Calculator Created by MGK" }}</div>
       <div class="previous-operand">{{ previous }}</div>
       <div class="current-operand">{{ current || '0' }}</div>
     </div>
@@ -251,6 +252,12 @@ export default {
   word-break: break-all;
 }
 
+.display .title {
+  color: rgba(255, 255, 255, .75);
+  font-size: 1rem;
+  color: rgb(219, 243, 195);
+  font-style: italic;
+}
 .display .previous-operand {
   color: rgba(255, 255, 255, .75);
   font-size: 1.5rem;
