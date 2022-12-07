@@ -229,11 +229,11 @@ export default {
 <style scoped>
 .calculator {
   margin: 0 auto;
-  width: 500px;
-  font-size: 50px;
+  width: 350px;
+  font-size: 30px;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  grid-auto-rows: minmax(50px, auto);
+  grid-auto-rows: minmax(35px, auto);
   text-align: center;
 }
 
@@ -267,7 +267,8 @@ export default {
 
 .display .current-operand {
   color: white;
-  font-size: 2.5rem;
+  font-size: 2.0rem;
+  height: auto;
 }
 
 .btn {
@@ -276,7 +277,7 @@ export default {
   border: 1px solid #333;
   border-radius: 30%;
   text-align: center;
-  font-size: 3rem;
+  font-size: 2rem;
 }
 
 .btn:hover {
