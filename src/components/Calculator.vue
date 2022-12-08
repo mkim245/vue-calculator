@@ -186,7 +186,11 @@ export default {
     <div class="display">
       <div class="title">{{ "Calculator Created by MGK Since Dec 2022" }}</div>
       <div class="previous-operand">{{ previous }}</div>
-      <div :class="current.length >= 20 ? 'current-operandsmall' : 'current-operand'">{{ current || '0' }}</div>
+      <div :class="current.length >= 20
+      ? current.length >= 25
+        ? 'current-operandsmaller'
+        : 'current-operandsmall'
+      : 'current-operand'">{{ current || '0' }}</div>
     </div>
     <div @click="clear" class="btn function">&#119860&#119862</div> <!--AC-->
     <div @click="logarithm" class="btn function">&#119897&#119899</div> <!--ln-->
@@ -269,7 +273,7 @@ export default {
 .display .current-operand {
   color: white;
   font-size: 2.0rem;
-  height: auto;
+  height: 40px;
 }
 
 .display .current-operandsmall {
@@ -277,7 +281,11 @@ export default {
   font-size: 1.5rem;
   height: auto;
 }
-
+.display .current-operandsmaller {
+  color: white;
+  font-size: 1.0rem;
+  height: auto;
+}
 .btn {
   cursor: pointer;
   background-color: #eee;
