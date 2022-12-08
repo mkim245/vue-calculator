@@ -116,7 +116,7 @@ export default {
         !this.current.includes('^') &&
           !this.current.includes('÷') &&
           !this.current.includes('x') &&
-          !this.current.includes('+') &&
+          this.current.charAt(this.current.length - 1) !== '+' &&
           this.current.charAt(this.current.length - 1) !== '-'
           ? '^' : this.current.operator = null)
       this.operator = (a, b) => Math.pow(a, b);
@@ -127,7 +127,7 @@ export default {
         !this.current.includes('^') &&
           !this.current.includes('÷') &&
           !this.current.includes('x') &&
-          !this.current.includes('+') &&
+          this.current.charAt(this.current.length - 1) !== '+' &&
           this.current.charAt(this.current.length - 1) !== '-'
           ? '÷' : this.current.operator = null)
       this.operator = (a, b) => a / b;
@@ -138,7 +138,7 @@ export default {
         !this.current.includes('^') &&
           !this.current.includes('÷') &&
           !this.current.includes('x') &&
-          !this.current.includes('+') &&
+          this.current.charAt(this.current.length - 1) !== '+' &&
           this.current.charAt(this.current.length - 1) !== '-'
           ? 'x' : this.current.operator = null)
       this.operator = (a, b) => a * b;
@@ -149,7 +149,7 @@ export default {
         !this.current.includes('^') &&
           !this.current.includes('÷') &&
           !this.current.includes('x') &&
-          !this.current.includes('+') &&
+          this.current.charAt(this.current.length - 1) !== '+' &&
           this.current.charAt(this.current.length - 1) !== '-'
           ? '+' : this.current.operator = null)
       this.operator = (a, b) => a + b;
@@ -160,7 +160,7 @@ export default {
         !this.current.includes('^') &&
           !this.current.includes('÷') &&
           !this.current.includes('x') &&
-          !this.current.includes('+') &&
+          this.current.charAt(this.current.length - 1) !== '+' &&
           this.current.charAt(this.current.length - 1) !== '-'
           ? '-' : this.current.operator = null)
       this.operator = (a, b) => a - b;
@@ -186,8 +186,13 @@ export default {
     <div class="display">
       <div class="title">{{ "Calculator Created by MGK Since Dec 2022" }}</div>
       <div class="previous-operand">{{ previous }}</div>
+      <!-- <div :class="current.length >= 20
+      ? current.length >= 26
+        ? 'previous-operandsmaller'
+        : 'previous-operandsmall'
+      : 'previous-operand'">{{ previous }}</div> -->
       <div :class="current.length >= 20
-      ? current.length >= 25
+      ? current.length >= 26
         ? 'current-operandsmaller'
         : 'current-operandsmall'
       : 'current-operand'">{{ current || '0' }}</div>
@@ -242,7 +247,7 @@ export default {
 }
 
 .display {
-  grid-row: 1 / 6;
+  grid-row: 1 / 7;
   color: white;
   border-radius: 5%;
   grid-column: 1 / -1;
@@ -267,9 +272,18 @@ export default {
 .display .previous-operand {
   color: rgba(255, 255, 255, .75);
   font-size: 1.5rem;
-  height: 10px;
+  height: 40px;
 }
-
+/* .display .previous-operandsmall {
+  color: rgba(255, 255, 255, .75);
+  font-size: 1.0rem;
+  height: 40px;
+}
+.display .previous-operandsmaller {
+  color: rgba(255, 255, 255, .75);
+  font-size: 0.7rem;
+  height: 40px;
+} */
 .display .current-operand {
   color: white;
   font-size: 2.0rem;
@@ -279,12 +293,12 @@ export default {
 .display .current-operandsmall {
   color: white;
   font-size: 1.5rem;
-  height: auto;
+  height: 40px;
 }
 .display .current-operandsmaller {
   color: white;
-  font-size: 1.0rem;
-  height: auto;
+  font-size: 0.8rem;
+  height: 40px;
 }
 .btn {
   cursor: pointer;
