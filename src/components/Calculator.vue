@@ -27,7 +27,7 @@ export default {
     append(number) {
       if (this.operatorClicked) {
         this.current = (number === '+' || number === '-' || number === '÷' || number === 'x' || number === '^') ?
-        `${this.current}` : '';
+          `${this.current}` : '';
         this.operatorClicked = false;
       }
       this.current = (this.newcal) // new calculation starts
@@ -69,15 +69,15 @@ export default {
       this.newcal = true;
     },
     reciprocal() {
-      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? (1/`${(parseFloat(this.current))}`).toFixed(4) : '';
+      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? (1 / `${(parseFloat(this.current))}`).toFixed(4) : '';
       this.newcal = true;
     },
     power2() {
-      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? (`${(parseFloat(this.current))}`*`${(parseFloat(this.current))}`).toFixed(2) : '';
+      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? (`${(parseFloat(this.current))}` * `${(parseFloat(this.current))}`).toFixed(2) : '';
       this.newcal = true;
     },
     cubicX() {
-      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? (`${(parseFloat(this.current))}`*`${(parseFloat(this.current))}`*`${(parseFloat(this.current))}`).toFixed(2) : '';
+      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? (`${(parseFloat(this.current))}` * `${(parseFloat(this.current))}` * `${(parseFloat(this.current))}`).toFixed(2) : '';
       this.newcal = true;
     },
     epowerX() {
@@ -114,7 +114,7 @@ export default {
     pow() {
       this.append(
         !this.current.includes('^') &&
-        !this.current.includes('÷') &&
+          !this.current.includes('÷') &&
           !this.current.includes('x') &&
           !this.current.includes('+') &&
           this.current.charAt(this.current.length - 1) !== '-'
@@ -125,7 +125,7 @@ export default {
     divide() {
       this.append(
         !this.current.includes('^') &&
-        !this.current.includes('÷') &&
+          !this.current.includes('÷') &&
           !this.current.includes('x') &&
           !this.current.includes('+') &&
           this.current.charAt(this.current.length - 1) !== '-'
@@ -136,7 +136,7 @@ export default {
     multiply() {
       this.append(
         !this.current.includes('^') &&
-        !this.current.includes('÷') &&
+          !this.current.includes('÷') &&
           !this.current.includes('x') &&
           !this.current.includes('+') &&
           this.current.charAt(this.current.length - 1) !== '-'
@@ -147,7 +147,7 @@ export default {
     add() {
       this.append(
         !this.current.includes('^') &&
-        !this.current.includes('÷') &&
+          !this.current.includes('÷') &&
           !this.current.includes('x') &&
           !this.current.includes('+') &&
           this.current.charAt(this.current.length - 1) !== '-'
@@ -158,7 +158,7 @@ export default {
     subtract() {
       this.append(
         !this.current.includes('^') &&
-        !this.current.includes('÷') &&
+          !this.current.includes('÷') &&
           !this.current.includes('x') &&
           !this.current.includes('+') &&
           this.current.charAt(this.current.length - 1) !== '-'
@@ -186,7 +186,7 @@ export default {
     <div class="display">
       <div class="title">{{ "Calculator Created by MGK Since Dec 2022" }}</div>
       <div class="previous-operand">{{ previous }}</div>
-      <div class="current-operand">{{ current || '0' }}</div>
+      <div :class="current.length >= 20 ? 'current-operandsmall' : 'current-operand'">{{ current || '0' }}</div>
     </div>
     <div @click="clear" class="btn function">&#119860&#119862</div> <!--AC-->
     <div @click="logarithm" class="btn function">&#119897&#119899</div> <!--ln-->
@@ -259,6 +259,7 @@ export default {
   font-style: italic;
   height: 10px;
 }
+
 .display .previous-operand {
   color: rgba(255, 255, 255, .75);
   font-size: 1.5rem;
@@ -268,6 +269,12 @@ export default {
 .display .current-operand {
   color: white;
   font-size: 2.0rem;
+  height: auto;
+}
+
+.display .current-operandsmall {
+  color: white;
+  font-size: 1.5rem;
   height: auto;
 }
 
