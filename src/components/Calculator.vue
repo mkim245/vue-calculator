@@ -21,7 +21,7 @@ export default {
         : !this.sign();
     },
     percent() {
-      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? `${(parseFloat(parseFloat(this.current) / 100).toFixed(4))}` : '';
+      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? `${(parseFloat(parseFloat(this.current) / 100))}` : '';
       this.newcal = true;
     },
     append(number) {
@@ -53,43 +53,43 @@ export default {
       this.operatorClicked = true;
     },
     logarithm() {
-      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? `${parseFloat(Math.log(this.current).toFixed(4))}` : '';
+      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? `${Math.log(parseFloat(this.current)).toFixed(8)}` : '';
       this.newcal = true;
     },
     logarithm10() {
-      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? `${parseFloat(Math.log10(this.current).toFixed(4))}` : '';
+      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? `${Math.log10(parseFloat(this.current)).toFixed(8)}` : '';
       this.newcal = true;
     },
     sqrt() {
-      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? `${parseFloat(Math.sqrt(this.current).toFixed(4))}` : '';
+      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? `${Math.sqrt(parseFloat(this.current)).toFixed(8)}` : '';
       this.newcal = true;
     },
     cubert() {
-      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? `${parseFloat(Math.cbrt(this.current).toFixed(4))}` : '';
+      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? `${Math.cbrt(parseFloat(this.current)).toFixed(8)}` : '';
       this.newcal = true;
     },
     reciprocal() {
-      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? (1 / `${(parseFloat(this.current))}`).toFixed(4) : '';
+      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? (1 / `${(parseFloat(this.current))}`).toFixed(8) : '';
       this.newcal = true;
     },
     power2() {
-      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? (`${(parseFloat(this.current))}` * `${(parseFloat(this.current))}`).toFixed(2) : '';
+      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? (`${(parseFloat(this.current))}` * `${(parseFloat(this.current))}`).toFixed(8) : '';
       this.newcal = true;
     },
     cubicX() {
-      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? (`${(parseFloat(this.current))}` * `${(parseFloat(this.current))}` * `${(parseFloat(this.current))}`).toFixed(2) : '';
+      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? (`${(parseFloat(this.current))}` * `${(parseFloat(this.current))}` * `${(parseFloat(this.current))}`).toFixed(10) : '';
       this.newcal = true;
     },
     epowerX() {
-      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? `${parseFloat(Math.pow(2.71828, this.current).toFixed(4))}` : '';
+      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? `${parseFloat(Math.pow(2.7182818284590452353602874713527, this.current).toFixed(8))}` : '';
       this.newcal = true;
     },
     twopowerX() {
-      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? `${parseFloat(Math.pow(2, this.current).toFixed(4))}` : '';
+      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? `${parseFloat(Math.pow(2, this.current).toFixed(8))}` : '';
       this.newcal = true;
     },
     tenpower() {
-      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? `${parseFloat(Math.pow(10, this.current).toFixed(4))}` : '';
+      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? `${parseFloat(Math.pow(10, this.current).toFixed(8))}` : '';
       this.newcal = true;
     },
     factorialCal(n) {
@@ -104,11 +104,11 @@ export default {
       this.newcal = true;
     },
     naturalE() {
-      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? '2.71828' : '';
+      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? '2.7182818284590452353602874713527' : '';
       this.newcal = true;
-    },
+    }, 
     pi() {
-      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? '3.14159' : '';
+      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? '3.1415926535897932384626433832795' : '';
       this.newcal = true;
     },
     pow() {
@@ -170,9 +170,7 @@ export default {
       this.current = `${parseFloat(this.operator(
         parseFloat(this.previous),
         parseFloat(this.current)
-      ).toFixed((!this.previous.includes(".") && !this.current.includes("."))
-        ? (this.divide && (parseFloat(this.previous) / parseFloat(this.current)) % 1 === 0)
-          ? 0 : 4 : 4))}`;
+      ))}`;
       this.previous = null;
       this.newcal = true;
     },
@@ -186,11 +184,6 @@ export default {
     <div class="display">
       <div class="title">{{ "Calculator Created by MGK Since Dec 2022" }}</div>
       <div class="previous-operand">{{ previous }}</div>
-      <!-- <div :class="current.length >= 20
-      ? current.length >= 26
-        ? 'previous-operandsmaller'
-        : 'previous-operandsmall'
-      : 'previous-operand'">{{ previous }}</div> -->
       <div :class="current.length >= 20
       ? current.length >= 26
         ? 'current-operandsmaller'
@@ -274,16 +267,7 @@ export default {
   font-size: 1.5rem;
   height: 40px;
 }
-/* .display .previous-operandsmall {
-  color: rgba(255, 255, 255, .75);
-  font-size: 1.0rem;
-  height: 40px;
-}
-.display .previous-operandsmaller {
-  color: rgba(255, 255, 255, .75);
-  font-size: 0.7rem;
-  height: 40px;
-} */
+
 .display .current-operand {
   color: white;
   font-size: 2.0rem;
