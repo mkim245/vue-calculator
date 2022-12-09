@@ -73,11 +73,11 @@ export default {
       this.newcal = true;
     },
     power2() {
-      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? (`${(parseFloat(this.current))}` * `${(parseFloat(this.current))}`).toFixed(8) : '';
+      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? (`${(parseFloat(this.current*this.current).toFixed(8))}`)  : '';
       this.newcal = true;
     },
     cubicX() {
-      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? (`${(parseFloat(this.current))}` * `${(parseFloat(this.current))}` * `${(parseFloat(this.current))}`).toFixed(10) : '';
+      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? (`${(parseFloat(this.current*this.current*this.current).toFixed(8))}`) : '';
       this.newcal = true;
     },
     epowerX() {
@@ -231,11 +231,11 @@ export default {
 <style scoped>
 .calculator {
   margin: 0 auto;
-  width: 350px;
-  font-size: 30px;
+  width: 300px;
+  font-size: 25px;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  grid-auto-rows: minmax(35px, auto);
+  grid-auto-rows: minmax(30px, auto);
   text-align: center;
 }
 
@@ -264,24 +264,24 @@ export default {
 
 .display .previous-operand {
   color: rgba(255, 255, 255, .75);
-  font-size: 1.5rem;
-  height: 40px;
+  font-size: 1.0rem;
+  height: 25px;
 }
 
 .display .current-operand {
   color: white;
-  font-size: 2.0rem;
+  font-size: 1.5rem;
   height: 40px;
 }
 
 .display .current-operandsmall {
   color: white;
-  font-size: 1.5rem;
+  font-size: 1.0rem;
   height: 40px;
 }
 .display .current-operandsmaller {
   color: white;
-  font-size: 0.8rem;
+  font-size: 0.6rem;
   height: 40px;
 }
 .btn {
