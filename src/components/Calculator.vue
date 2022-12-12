@@ -167,12 +167,14 @@ export default {
       this.setPrevious();
     },
     equal() {
+      if(this.previous) {
       this.current = `${Math.round(10000000000*parseFloat(this.operator(
         parseFloat(this.previous),
         parseFloat(this.current)
       )))/10000000000}`;
       this.previous = null;
       this.newcal = true;
+      }
     },
   }
 }
