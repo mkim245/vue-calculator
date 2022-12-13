@@ -94,10 +94,14 @@ export default {
     },
     factorialCal(n) {
       let outcome = 1;
+      if(n===0) {
+        return outcome = 0;
+      } else {
       for (let i = 1; i <= n; i++) {
         outcome *= i;
       }
       return outcome;
+    }
     },
     factorial() {
       this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? `${Math.round(10000000000*this.factorialCal(parseFloat(this.current)))/10000000000}` : '';
