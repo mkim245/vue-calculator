@@ -9,13 +9,12 @@ export default {
       operator: null,
       operatorClicked: false,
       newcal: false,
-      conOperator: false,
     }
   },
   methods: {
     clear() {
       this.current = '0';
-      this.previous= null;
+      this.previous = null;
       this.newcal = false;
     },
     sign() {
@@ -30,24 +29,16 @@ export default {
     append(number) {
       if (this.operatorClicked) {
         this.current = (number === '+' || number === '-' || number === '÷' || number === 'x' || number === '^') ?
-          `${this.current}` : '';
+          `${this.current}` : ''; //when operators were clicked, other operators do not work. If it is number, this.current is emptied
         this.operatorClicked = false;
       }
-      // if (this.conOperator) {
-      //   console.log("1")
-      //   this.current = (number === '+' || number === '-' || number === '÷' || number === 'x' || number === '^')
-      //     ? (`${number}`)
-      //     : `${this.current}${number}`;
-      //   // this.conOperator = false
-      // } else {
-        this.current = (this.newcal) // new calculation starts
-          ? (number === '+' || number === '-' || number === '÷' || number === 'x' || number === '^') // operators are clicked
-            ? (`${this.current}${number}`) // the operators added to the current
-            : (this.newcal = false, `${number}`) // when numeric value is clicked, new number alone is shown
-          : ((this.current === '0' || this.current === '-0') && number !== '.' && number !== '+' && number !== '-' && number !== '÷' && number !== 'x' && number !== '^') // when the current is zero and takes new numbers except for dot 
-            ? (number === '.' ? `${this.current}${number}` : `${number}`)
-            : `${this.current}${number}`; // if not new calculation i.e. when program starts, input value is added to the current
-      // }
+      this.current = (this.newcal) // new calculation starts
+        ? (number === '+' || number === '-' || number === '÷' || number === 'x' || number === '^') // operators are clicked
+          ? (`${this.current}${number}`) // the operators added to the current
+          : (this.newcal = false, `${number}`) // when numeric value is clicked, new number alone is shown
+        : ((this.current === '0' || this.current === '-0') && number !== '.' && number !== '+' && number !== '-' && number !== '÷' && number !== 'x' && number !== '^') // when the current is zero and takes new numbers except for dot 
+          ? (number === '.' ? `${this.current}${number}` : `${number}`)
+          : `${this.current}${number}`; // if not new calculation i.e. when program starts, input value is added to the current
       if (this.current === "00") this.current = '';  //prevent double zero from being in front
       if (this.current === '-00') this.current = '-';
     },
@@ -59,26 +50,19 @@ export default {
     del() {
       this.current = this.current.slice(0, -1);
     },
-    setPrevious() {
-      this.previous = this.current;
+    setPrevious(name) { //to make continuous calcuation on previous results
+      if (this.operator && this.previous) {
+        this.current = `${Math.round(10000000000 * parseFloat(this.previousOperator(
+          parseFloat(this.previous),
+          parseFloat(this.current)
+        ))) / 10000000000}${name}`;
+        this.previous = this.current;
+        this.newcal = true;
+      } else {
+        this.previous = this.current; //after clicking operator, the previous values are same as the current
+      }
       this.operatorClicked = true;
     },
-    // setPrevious() { //to make continuous calcuation on previous results
-    //   if (this.operator && this.previous) {
-    //     this.previous = `${Math.round(10000000000 * parseFloat(this.previousOperator(
-    //       parseFloat(this.previous),
-    //       parseFloat(this.current)
-    //     ))) / 10000000000}`;
-    //     // this.current = this.previous;
-    //     this.newcal = true;
-    //     this.conOperator = true;
-    //     console.log("2")
-    //   } else {
-    //     this.previous = this.current;
-    //     console.log("3")
-    //   }
-    //   this.operatorClicked = true;
-    // },
     logarithm() {
       this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? `${Math.round(10000000000 * Math.log(parseFloat(this.current))) / 10000000000}` : '';
       this.newcal = true;
@@ -152,7 +136,7 @@ export default {
           ? '^' : this.current.operator = '')
       this.previousOperator = this.operator;
       this.operator = (a, b) => Math.pow(a, b);
-      this.setPrevious();
+      this.setPrevious('^');
     },
     divide() {
       this.append(
@@ -164,7 +148,7 @@ export default {
           ? '÷' : this.current.operator = '')
       this.previousOperator = this.operator;
       this.operator = (a, b) => a / b;
-      this.setPrevious();
+      this.setPrevious('÷');
     },
     multiply() {
       this.append(
@@ -176,7 +160,7 @@ export default {
           ? 'x' : this.current.operator = '')
       this.previousOperator = this.operator;
       this.operator = (a, b) => a * b;
-      this.setPrevious();
+      this.setPrevious('x');
     },
     add() {
       this.append(
@@ -188,7 +172,7 @@ export default {
           ? '+' : this.current.operator = '')
       this.previousOperator = this.operator;
       this.operator = (a, b) => a + b;
-      this.setPrevious();
+      this.setPrevious('+');
     },
     subtract() {
       this.append(
@@ -200,7 +184,7 @@ export default {
           ? '-' : this.current.operator = '')
       this.previousOperator = this.operator;
       this.operator = (a, b) => a - b;
-      this.setPrevious();
+      this.setPrevious('-');
     },
     equal() {
       if (this.previous) {
