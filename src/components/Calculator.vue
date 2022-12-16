@@ -46,7 +46,9 @@ export default {
     },
     dot() {
       if (this.current.indexOf('.') === -1 && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '')) {
-        this.append(this.current === '' ? '0.' : '.');
+        this.append(this.current === '' || this.current.includes('+') || this.current.includes('-') || this.current.includes('÷') || this.current.includes('x') || this.current.includes('^') || this.newcal === true
+          ? '0.'
+          : '.');
       }
     },
     del() {
