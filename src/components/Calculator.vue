@@ -139,7 +139,7 @@ export default {
       }
     },
     factorial() {
-      this.current = this.current.charAt(0) !== '' && this.current.charAt(0) !== '-' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') && !this.current.includes('+') && !this.current.includes('-') && !this.current.includes('÷') && !this.current.includes('x') && !this.current.includes('^')
+      this.current = this.current.charAt(0) !== '' && this.current.charAt(0) !== '-' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') && !this.current.includes('+') && !this.current.includes('-') && !this.current.includes('÷') && !this.current.includes('x') && !this.current.includes('^') && (parseFloat(this.current) % 2 === 0 || parseFloat(this.current) % 2 === 1)
         ? `${Math.round(10000000000 * this.factorialCal(parseFloat(this.current))) / 10000000000}`
         : `${this.current}`;
       this.newcal = true;
