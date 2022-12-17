@@ -23,7 +23,7 @@ export default {
         : !this.sign();
     },
     percent() {
-      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') && !this.current.includes('+') && !this.current.includes('-') && !this.current.includes('÷') && !this.current.includes('x') && !this.current.includes('^')
+      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') && !this.current.includes('+') && this.current.charAt(this.current.length-1) !=='-' && !this.current.includes('÷') && !this.current.includes('x') && !this.current.includes('^')
         ? `${Math.round(10000000000 * (parseFloat(parseFloat(this.current) / 100))) / 10000000000}`
         : `${this.current}`;
       this.newcal = true;
@@ -46,7 +46,7 @@ export default {
     },
     dot() {
       if (this.current.indexOf('.') === -1 && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '')) {
-        this.append(this.current === '' || this.current.includes('+') || this.current.includes('-') || this.current.includes('÷') || this.current.includes('x') || this.current.includes('^') || this.newcal === true
+        this.append(this.current === '' || this.current.includes('+') || this.current.charAt(this.current.length-1) !=='-' || this.current.includes('÷') || this.current.includes('x') || this.current.includes('^') || this.newcal === true
           ? '0.'
           : '.');
       }
@@ -68,61 +68,61 @@ export default {
       this.operatorClicked = true;
     },
     logarithm() {
-      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') && !this.current.includes('+') && !this.current.includes('-') && !this.current.includes('÷') && !this.current.includes('x') && !this.current.includes('^')
+      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') && !this.current.includes('+') && this.current.charAt(this.current.length-1) !=='-' && !this.current.includes('÷') && !this.current.includes('x') && !this.current.includes('^')
         ? `${Math.round(10000000000 * Math.log(parseFloat(this.current))) / 10000000000}`
         : `${this.current}`;
       this.newcal = true;
     },
     logarithm10() {
-      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') && !this.current.includes('+') && !this.current.includes('-') && !this.current.includes('÷') && !this.current.includes('x') && !this.current.includes('^')
+      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') && !this.current.includes('+') && this.current.charAt(this.current.length-1) !=='-' && !this.current.includes('÷') && !this.current.includes('x') && !this.current.includes('^')
         ? `${Math.round(10000000000 * Math.log10(parseFloat(this.current))) / 10000000000}`
         : `${this.current}`;
       this.newcal = true;
     },
     sqrt() {
-      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') && !this.current.includes('+') && !this.current.includes('-') && !this.current.includes('÷') && !this.current.includes('x') && !this.current.includes('^')
+      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') && !this.current.includes('+') && this.current.charAt(this.current.length-1) !=='-' && !this.current.includes('÷') && !this.current.includes('x') && !this.current.includes('^')
         ? `${Math.round(10000000000 * Math.sqrt(parseFloat(this.current))) / 10000000000}`
         : `${this.current}`;
       this.newcal = true;
     },
     cubert() {
-      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') && !this.current.includes('+') && !this.current.includes('-') && !this.current.includes('÷') && !this.current.includes('x') && !this.current.includes('^')
+      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') && !this.current.includes('+') && this.current.charAt(this.current.length-1) !=='-' && !this.current.includes('÷') && !this.current.includes('x') && !this.current.includes('^')
         ? `${Math.round(10000000000 * Math.cbrt(parseFloat(this.current))) / 10000000000}`
         : `${this.current}`;
       this.newcal = true;
     },
     reciprocal() {
-      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') && !this.current.includes('+') && !this.current.includes('-') && !this.current.includes('÷') && !this.current.includes('x') && !this.current.includes('^')
+      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') && !this.current.includes('+') && this.current.charAt(this.current.length-1) !=='-' && !this.current.includes('÷') && !this.current.includes('x') && !this.current.includes('^')
         ? `${Math.round(10000000000 / (parseFloat(this.current))) / 10000000000}`
         : `${this.current}`;
       this.newcal = true;
     },
     power2() {
-      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') && !this.current.includes('+') && !this.current.includes('-') && !this.current.includes('÷') && !this.current.includes('x') && !this.current.includes('^')
+      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') && !this.current.includes('+') && this.current.charAt(this.current.length-1) !=='-' && !this.current.includes('÷') && !this.current.includes('x') && !this.current.includes('^')
         ? (`${Math.round(10000000000 * parseFloat(this.current * this.current)) / 10000000000}`)
         : `${this.current}`;
       this.newcal = true;
     },
     cubicX() {
-      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') && !this.current.includes('+') && !this.current.includes('-') && !this.current.includes('÷') && !this.current.includes('x') && !this.current.includes('^')
+      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') && !this.current.includes('+') && this.current.charAt(this.current.length-1) !=='-' && !this.current.includes('÷') && !this.current.includes('x') && !this.current.includes('^')
         ? (`${Math.round(10000000000 * parseFloat(this.current * this.current * this.current)) / 10000000000}`)
         : `${this.current}`;
       this.newcal = true;
     },
     epowerX() {
-      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') && !this.current.includes('+') && !this.current.includes('-') && !this.current.includes('÷') && !this.current.includes('x') && !this.current.includes('^')
+      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') && !this.current.includes('+') && this.current.charAt(this.current.length-1) !=='-' && !this.current.includes('÷') && !this.current.includes('x') && !this.current.includes('^')
         ? `${Math.round(10000000000 * parseFloat(Math.pow(2.7182818284590452353602874713527, this.current))) / 10000000000}`
         : `${this.current}`;
       this.newcal = true;
     },
     twopowerX() {
-      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') && !this.current.includes('+') && !this.current.includes('-') && !this.current.includes('÷') && !this.current.includes('x') && !this.current.includes('^')
+      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') && !this.current.includes('+') && this.current.charAt(this.current.length-1) !=='-' && !this.current.includes('÷') && !this.current.includes('x') && !this.current.includes('^')
         ? `${Math.round(10000000000 * parseFloat(Math.pow(2, this.current))) / 10000000000}`
         : `${this.current}`;
       this.newcal = true;
     },
     tenpower() {
-      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') && !this.current.includes('+') && !this.current.includes('-') && !this.current.includes('÷') && !this.current.includes('x') && !this.current.includes('^')
+      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') && !this.current.includes('+') && this.current.charAt(this.current.length-1) !=='-' && !this.current.includes('÷') && !this.current.includes('x') && !this.current.includes('^')
         ? `${Math.round(10000000000 * parseFloat(Math.pow(10, this.current))) / 10000000000}`
         : `${this.current}`;
       this.newcal = true;
@@ -139,7 +139,7 @@ export default {
       }
     },
     factorial() {
-      this.current = this.current.charAt(0) !== '' && this.current.charAt(0) !== '-' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') && !this.current.includes('+') && !this.current.includes('-') && !this.current.includes('÷') && !this.current.includes('x') && !this.current.includes('^') && (parseFloat(this.current) % 2 === 0 || parseFloat(this.current) % 2 === 1)
+      this.current = this.current.charAt(0) !== '' && this.current.charAt(0) !== '-' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') && !this.current.includes('+') && this.current.charAt(this.current.length-1) !=='-' && !this.current.includes('÷') && !this.current.includes('x') && !this.current.includes('^') && (parseFloat(this.current) % 2 === 0 || parseFloat(this.current) % 2 === 1)
         ? `${Math.round(10000000000 * this.factorialCal(parseFloat(this.current))) / 10000000000}`
         : `${this.current}`;
       this.newcal = true;
