@@ -230,7 +230,7 @@ export default {
 <template>
   <div class="calculator">
     <div class="display">
-      <div class="title">{{ "Calculator Created by MGK Since Dec 2022" }}</div>
+      <div class="title">{{ "Calculator Created by MGK Since Dec 2022, ver 1.2.0" }}</div>
       <div class="previous-operand">{{ previous }}</div>
       <div :class="current.length >= 20
       ? current.length >= 26
@@ -273,6 +273,10 @@ export default {
     <div @click="append('00')" class="btn">00</div>
     <div @click="dot" class="btn">.</div>
     <div @click="equal" class="btn operator">=</div>
+    <div class="comments">
+      <p>{{ 'version 1.2.0 - enable new calculation by clicking operators'}}</p>
+      <p>{{ 'version 1.1.0 - enable simple calculations' }}</p>
+    </div>
   </div>
 </template>
 
@@ -304,7 +308,7 @@ export default {
 
 .display .title {
   color: rgba(255, 255, 255, .75);
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   color: rgb(219, 243, 195);
   font-style: italic;
   height: 10px;
@@ -334,6 +338,15 @@ export default {
   height: 40px;
 }
 
+.calculator .comments {
+  margin-top: 10px;
+  grid-column: 1 / -1;
+  color: rgba(255, 255, 255, .75);
+  font-size: 1rem;
+  color: black;
+  font-style: italic;
+  height: 10px;
+}
 .btn {
   cursor: pointer;
   background-color: #eee;
@@ -356,4 +369,5 @@ export default {
   background-color: powderblue;
   color: black;
 }
+
 </style>
