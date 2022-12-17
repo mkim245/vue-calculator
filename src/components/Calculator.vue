@@ -285,7 +285,11 @@ export default {
   margin: 0 auto;
   width: 300px;
   font-size: 25px;
+  border-radius: 7%;
   display: grid;
+  background-color: black;
+  border-color: yellowgreen;
+  border-width: 20px;
   grid-template-columns: repeat(5, 1fr);
   grid-auto-rows: minmax(30px, auto);
   text-align: center;
@@ -294,7 +298,7 @@ export default {
 .display {
   grid-row: 1 / 7;
   color: white;
-  border-radius: 5%;
+  /* border-radius: 5%; */
   grid-column: 1 / -1;
   background-color: rgba(0, 0, 0, .75);
   display: flex;
@@ -339,7 +343,7 @@ export default {
 }
 
 .calculator .comments {
-  margin-top: 10px;
+  margin-top: 20px;
   grid-column: 1 / -1;
   color: rgba(255, 255, 255, .75);
   font-size: 1rem;
@@ -349,9 +353,10 @@ export default {
 }
 .btn {
   cursor: pointer;
-  background-color: #eee;
+  background-color: darkgrey;
+  color: white;
   border: 1px solid #333;
-  border-radius: 30%;
+  border-radius: 60%;
   text-align: center;
   font-size: 2rem;
 }
