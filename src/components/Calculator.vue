@@ -41,16 +41,12 @@ export default {
         : ((this.current === '0' || this.current === '-0') && number !== '.' && number !== '+' && number !== '-' && number !== '÷' && number !== 'x' && number !== '^') // when the current is zero and takes new numbers except for dot 
           ? (number === '.' ? `${this.current}${number}` : `${number}`)
           : `${this.current}${number}`; // if not new calculation i.e. when program starts, input value is added to the current
-      if (this.current === "00") this.current = '';  //prevent double zero from being in front
+      if (this.current === "00") this.current = '0';
       if (this.current === '-00') this.current = '-';
     },
     dot() {
       if (this.current.indexOf('.') === -1 && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '')) {
-        this.append(this.current === '' || this.current.includes('+') || this.current.charAt(this.current.length - 1) !== '-' || this.current.includes('÷') || this.current.includes('x') || this.current.includes('^') || this.newcal === true
-          ? this.current.charAt(0) !== "0" //prevent adding zero when click dot i.e. 3. -> 30.
-            ? '.' 
-            : '0.'
-          : '.');
+        this.append('.')
       }
     },
     del() {
