@@ -23,7 +23,7 @@ export default {
         : !this.sign();
     },
     percent() {
-      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') && !this.current.includes('+') && this.current.charAt(this.current.length-1) !=='-' && !this.current.includes('÷') && !this.current.includes('x') && !this.current.includes('^')
+      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') && !this.current.includes('+') && this.current.charAt(this.current.length - 1) !== '-' && !this.current.includes('÷') && !this.current.includes('x') && !this.current.includes('^')
         ? `${Math.round(10000000000 * (parseFloat(parseFloat(this.current) / 100))) / 10000000000}`
         : `${this.current}`;
       this.newcal = true;
@@ -46,8 +46,10 @@ export default {
     },
     dot() {
       if (this.current.indexOf('.') === -1 && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '')) {
-        this.append(this.current === '' || this.current.includes('+') || this.current.charAt(this.current.length-1) !=='-' || this.current.includes('÷') || this.current.includes('x') || this.current.includes('^') || this.newcal === true
-          ? '0.'
+        this.append(this.current === '' || this.current.includes('+') || this.current.charAt(this.current.length - 1) !== '-' || this.current.includes('÷') || this.current.includes('x') || this.current.includes('^') || this.newcal === true
+          ? this.current.charAt(0) !== "0" //prevent adding zero when click dot i.e. 3. -> 30.
+            ? '.' 
+            : '0.'
           : '.');
       }
     },
@@ -68,61 +70,61 @@ export default {
       this.operatorClicked = true;
     },
     logarithm() {
-      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') && !this.current.includes('+') && this.current.charAt(this.current.length-1) !=='-' && !this.current.includes('÷') && !this.current.includes('x') && !this.current.includes('^')
+      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') && !this.current.includes('+') && this.current.charAt(this.current.length - 1) !== '-' && !this.current.includes('÷') && !this.current.includes('x') && !this.current.includes('^')
         ? `${Math.round(10000000000 * Math.log(parseFloat(this.current))) / 10000000000}`
         : `${this.current}`;
       this.newcal = true;
     },
     logarithm10() {
-      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') && !this.current.includes('+') && this.current.charAt(this.current.length-1) !=='-' && !this.current.includes('÷') && !this.current.includes('x') && !this.current.includes('^')
+      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') && !this.current.includes('+') && this.current.charAt(this.current.length - 1) !== '-' && !this.current.includes('÷') && !this.current.includes('x') && !this.current.includes('^')
         ? `${Math.round(10000000000 * Math.log10(parseFloat(this.current))) / 10000000000}`
         : `${this.current}`;
       this.newcal = true;
     },
     sqrt() {
-      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') && !this.current.includes('+') && this.current.charAt(this.current.length-1) !=='-' && !this.current.includes('÷') && !this.current.includes('x') && !this.current.includes('^')
+      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') && !this.current.includes('+') && this.current.charAt(this.current.length - 1) !== '-' && !this.current.includes('÷') && !this.current.includes('x') && !this.current.includes('^')
         ? `${Math.round(10000000000 * Math.sqrt(parseFloat(this.current))) / 10000000000}`
         : `${this.current}`;
       this.newcal = true;
     },
     cubert() {
-      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') && !this.current.includes('+') && this.current.charAt(this.current.length-1) !=='-' && !this.current.includes('÷') && !this.current.includes('x') && !this.current.includes('^')
+      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') && !this.current.includes('+') && this.current.charAt(this.current.length - 1) !== '-' && !this.current.includes('÷') && !this.current.includes('x') && !this.current.includes('^')
         ? `${Math.round(10000000000 * Math.cbrt(parseFloat(this.current))) / 10000000000}`
         : `${this.current}`;
       this.newcal = true;
     },
     reciprocal() {
-      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') && !this.current.includes('+') && this.current.charAt(this.current.length-1) !=='-' && !this.current.includes('÷') && !this.current.includes('x') && !this.current.includes('^')
+      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') && !this.current.includes('+') && this.current.charAt(this.current.length - 1) !== '-' && !this.current.includes('÷') && !this.current.includes('x') && !this.current.includes('^')
         ? `${Math.round(10000000000 / (parseFloat(this.current))) / 10000000000}`
         : `${this.current}`;
       this.newcal = true;
     },
     power2() {
-      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') && !this.current.includes('+') && this.current.charAt(this.current.length-1) !=='-' && !this.current.includes('÷') && !this.current.includes('x') && !this.current.includes('^')
+      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') && !this.current.includes('+') && this.current.charAt(this.current.length - 1) !== '-' && !this.current.includes('÷') && !this.current.includes('x') && !this.current.includes('^')
         ? (`${Math.round(10000000000 * parseFloat(this.current * this.current)) / 10000000000}`)
         : `${this.current}`;
       this.newcal = true;
     },
     cubicX() {
-      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') && !this.current.includes('+') && this.current.charAt(this.current.length-1) !=='-' && !this.current.includes('÷') && !this.current.includes('x') && !this.current.includes('^')
+      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') && !this.current.includes('+') && this.current.charAt(this.current.length - 1) !== '-' && !this.current.includes('÷') && !this.current.includes('x') && !this.current.includes('^')
         ? (`${Math.round(10000000000 * parseFloat(this.current * this.current * this.current)) / 10000000000}`)
         : `${this.current}`;
       this.newcal = true;
     },
     epowerX() {
-      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') && !this.current.includes('+') && this.current.charAt(this.current.length-1) !=='-' && !this.current.includes('÷') && !this.current.includes('x') && !this.current.includes('^')
+      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') && !this.current.includes('+') && this.current.charAt(this.current.length - 1) !== '-' && !this.current.includes('÷') && !this.current.includes('x') && !this.current.includes('^')
         ? `${Math.round(10000000000 * parseFloat(Math.pow(2.7182818284590452353602874713527, this.current))) / 10000000000}`
         : `${this.current}`;
       this.newcal = true;
     },
     twopowerX() {
-      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') && !this.current.includes('+') && this.current.charAt(this.current.length-1) !=='-' && !this.current.includes('÷') && !this.current.includes('x') && !this.current.includes('^')
+      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') && !this.current.includes('+') && this.current.charAt(this.current.length - 1) !== '-' && !this.current.includes('÷') && !this.current.includes('x') && !this.current.includes('^')
         ? `${Math.round(10000000000 * parseFloat(Math.pow(2, this.current))) / 10000000000}`
         : `${this.current}`;
       this.newcal = true;
     },
     tenpower() {
-      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') && !this.current.includes('+') && this.current.charAt(this.current.length-1) !=='-' && !this.current.includes('÷') && !this.current.includes('x') && !this.current.includes('^')
+      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') && !this.current.includes('+') && this.current.charAt(this.current.length - 1) !== '-' && !this.current.includes('÷') && !this.current.includes('x') && !this.current.includes('^')
         ? `${Math.round(10000000000 * parseFloat(Math.pow(10, this.current))) / 10000000000}`
         : `${this.current}`;
       this.newcal = true;
@@ -139,7 +141,7 @@ export default {
       }
     },
     factorial() {
-      this.current = this.current.charAt(0) !== '' && this.current.charAt(0) !== '-' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') && !this.current.includes('+') && this.current.charAt(this.current.length-1) !=='-' && !this.current.includes('÷') && !this.current.includes('x') && !this.current.includes('^') && (parseFloat(this.current) % 2 === 0 || parseFloat(this.current) % 2 === 1)
+      this.current = this.current.charAt(0) !== '' && this.current.charAt(0) !== '-' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') && !this.current.includes('+') && this.current.charAt(this.current.length - 1) !== '-' && !this.current.includes('÷') && !this.current.includes('x') && !this.current.includes('^') && (parseFloat(this.current) % 2 === 0 || parseFloat(this.current) % 2 === 1)
         ? `${Math.round(10000000000 * this.factorialCal(parseFloat(this.current))) / 10000000000}`
         : `${this.current}`;
       this.newcal = true;
@@ -274,7 +276,7 @@ export default {
     <div @click="dot" class="btn">.</div>
     <div @click="equal" class="btn operator">=</div>
     <div class="comments">
-      <p>{{ 'version 1.2.0 - enable new calculation by clicking operators'}}</p>
+      <p>{{ 'version 1.2.0 - enable new calculation by clicking operators' }}</p>
       <p>{{ 'version 1.1.0 - enable simple calculations' }}</p>
     </div>
   </div>
@@ -298,7 +300,7 @@ export default {
 .display {
   grid-row: 1 / 7;
   color: white;
-  /* border-radius: 5%; */
+  border-radius: 20%;
   grid-column: 1 / -1;
   background-color: rgba(0, 0, 0, .75);
   display: flex;
@@ -313,7 +315,6 @@ export default {
 .display .title {
   color: rgba(255, 255, 255, .75);
   font-size: 0.7rem;
-  color: rgb(219, 243, 195);
   font-style: italic;
   height: 10px;
 }
@@ -343,7 +344,7 @@ export default {
 }
 
 .calculator .comments {
-  margin-top: 20px;
+  padding-top: 30px;
   grid-column: 1 / -1;
   color: rgba(255, 255, 255, .75);
   font-size: 1rem;
@@ -351,28 +352,39 @@ export default {
   font-style: italic;
   height: 10px;
 }
+
 .btn {
   cursor: pointer;
-  background-color: darkgrey;
-  color: white;
-  border: 1px solid #333;
-  border-radius: 60%;
+  background-color: rgb(43, 17, 17);
+  color: rgb(164, 191, 249);
+  border: 1.5px solid rgb(79, 78, 78);
+  /* border-radius: 60%; */
   text-align: center;
   font-size: 2rem;
 }
 
 .btn:hover {
-  background-color: rgba(255, 255, 255, .9);
+  background-color: white;
+  color: black
 }
 
 .operator {
-  background-color: orange;
-  color: black;
+  background-color: rgb(31, 20, 0);
+  color: white;
+}
+
+.operator:hover {
+  background-color: white;
+  color: rgb(31, 20, 0)
 }
 
 .function {
-  background-color: powderblue;
-  color: black;
+  background-color: rgb(1, 40, 46);
+  color: white;
 }
 
+.function:hover {
+  background-color: grey;
+  color: black
+}
 </style>
