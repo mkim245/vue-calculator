@@ -37,7 +37,7 @@ export default {
       this.current = (this.newcal) // new calculation starts
         ? (number === '+' || number === '-' || number === '÷' || number === 'x' || number === '^') // operators are clicked
           ? (`${this.current}${number}`) // the operators added to the current
-          : ((this.current === '0') && number === '.') ? (this.newcal = false, `0${number}`) : (this.newcal = false, `${number}`) // when numeric value is clicked, new number alone is shown / when dot was clicked at the current value of zero, it shows 0. not .
+          : ((this.current === '') && number === '.') ? (this.newcal = false, `0${number}`) : (this.newcal = false, `${number}`) // when numeric value is clicked, new number alone is shown / when dot was clicked at the current value of zero, it shows 0. not .
         : ((this.current === '0' || this.current === '-0') && number !== '.' && number !== '+' && number !== '-' && number !== '÷' && number !== 'x' && number !== '^') // when the current is zero and takes new numbers except for dot 
           ? (number === '.' ? `${this.current}${number}` : `${number}`)
           : ((this.current === '') && number === '.') ? `0${number}` : `${this.current}${number}`; // if not new calculation i.e. when program starts, input value is added to the current / when dot was clicked at the current value of null, it shows 0. not .
@@ -45,11 +45,9 @@ export default {
       if (this.current === '-00') this.current = '-';
     },
     dot() {
-      console.log("this.current.charAt(0)1",this.current.charAt(0))
       if (this.current.indexOf('.') === -1 && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '')) {
         this.append('.')
       }
-      console.log("this.current.charAt(0)2",this.current.charAt(0))
     },
     del() {
       this.current = this.current.slice(0, -1);
@@ -381,11 +379,13 @@ export default {
   color: rgb(232, 188, 30);
   font-size: 1.7rem;
 }
+
 .power {
   font-size: 1.6rem;
 }
+
 .function:hover {
-  background-color:  rgb(232, 188, 30);
+  background-color: rgb(232, 188, 30);
   color: black
 }
 </style>
