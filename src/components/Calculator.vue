@@ -37,17 +37,19 @@ export default {
       this.current = (this.newcal) // new calculation starts
         ? (number === '+' || number === '-' || number === '÷' || number === 'x' || number === '^') // operators are clicked
           ? (`${this.current}${number}`) // the operators added to the current
-          : (this.newcal = false, `${number}`) // when numeric value is clicked, new number alone is shown
+          : ((this.current === '0') && number === '.') ? (this.newcal = false, `0${number}`) : (this.newcal = false, `${number}`) // when numeric value is clicked, new number alone is shown / when dot was clicked at the current value of zero, it shows 0. not .
         : ((this.current === '0' || this.current === '-0') && number !== '.' && number !== '+' && number !== '-' && number !== '÷' && number !== 'x' && number !== '^') // when the current is zero and takes new numbers except for dot 
           ? (number === '.' ? `${this.current}${number}` : `${number}`)
-          : `${this.current}${number}`; // if not new calculation i.e. when program starts, input value is added to the current
+          : ((this.current === '') && number === '.') ? `0${number}` : `${this.current}${number}`; // if not new calculation i.e. when program starts, input value is added to the current / when dot was clicked at the current value of null, it shows 0. not .
       if (this.current === "00") this.current = '0';
       if (this.current === '-00') this.current = '-';
     },
     dot() {
+      console.log("this.current.charAt(0)1",this.current.charAt(0))
       if (this.current.indexOf('.') === -1 && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '')) {
         this.append('.')
       }
+      console.log("this.current.charAt(0)2",this.current.charAt(0))
     },
     del() {
       this.current = this.current.slice(0, -1);
@@ -244,8 +246,8 @@ export default {
     <div @click="pi" class="btn function"><i>π</i></div>
     <div @click="naturalE" class="btn function">&#120358</div> <!--e-->
     <div @click="epowerX" class="btn function">&#120358<sup>&#119909</sup></div> <!--e^x-->
-    <div @click="twopowerX" class="btn function">&#120804<sup>&#119909</sup></div> <!--2^x-->
-    <div @click="tenpower" class="btn function">10<sup>&#119909</sup></div> <!--10^x-->
+    <div @click="twopowerX" class="btn function power">&#120804<sup>&#119909</sup></div> <!--2^x-->
+    <div @click="tenpower" class="btn function power">10<sup>&#119909</sup></div> <!--10^x-->
     <div @click="power2" class="btn function">&#119909&sup2</div> <!--x^2-->
     <div @click="cubicX" class="btn function">&#119909&#179</div> <!--x^3-->
     <div @click="sqrt" class="btn function"><i>&sup2√</i></div> <!--2√-->
@@ -351,7 +353,7 @@ export default {
 
 .btn {
   cursor: pointer;
-  background-color: rgb(43, 17, 17);
+  background-color: rgba(22, 0, 0, 0);
   color: rgb(164, 191, 249);
   border: 1.5px solid rgb(79, 78, 78);
   /* border-radius: 60%; */
@@ -375,12 +377,15 @@ export default {
 }
 
 .function {
-  background-color: rgb(1, 40, 46);
-  color: white;
+  background-color: rgba(10, 32, 36, 0.564);
+  color: rgb(232, 188, 30);
+  font-size: 1.7rem;
 }
-
+.power {
+  font-size: 1.6rem;
+}
 .function:hover {
-  background-color: grey;
+  background-color:  rgb(232, 188, 30);
   color: black
 }
 </style>
