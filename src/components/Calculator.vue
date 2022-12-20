@@ -34,15 +34,17 @@ export default {
           `${this.current}` : ''; //when operators were clicked, other operators do not work. If it is number, this.current is emptied
         this.operatorClicked = false;
       }
+      console.log("this.newcal1", this.newcal)
       this.current = (this.newcal) // new calculation starts
         ? (number === '+' || number === '-' || number === '÷' || number === 'x' || number === '^') // operators are clicked
           ? (`${this.current}${number}`) // the operators added to the current
-          : ((this.current === '') && number === '.') ? (this.newcal = false, `0${number}`) : (this.newcal = false, `${number}`) // when numeric value is clicked, new number alone is shown / when dot was clicked at the current value of zero, it shows 0. not .
+          : (number === '.') ? (this.newcal = false, `0${number}`) : (this.newcal = false, `${number}`) // when numeric value is clicked, new number alone is shown / when dot was clicked at the current value of zero, it shows 0. not .
         : ((this.current === '0' || this.current === '-0') && number !== '.' && number !== '+' && number !== '-' && number !== '÷' && number !== 'x' && number !== '^') // when the current is zero and takes new numbers except for dot 
           ? (number === '.' ? `${this.current}${number}` : `${number}`)
           : ((this.current === '') && number === '.') ? `0${number}` : `${this.current}${number}`; // if not new calculation i.e. when program starts, input value is added to the current / when dot was clicked at the current value of null, it shows 0. not .
       if (this.current === "00") this.current = '0';
       if (this.current === '-00') this.current = '-';
+      console.log("this.newcal2", this.newcal)
     },
     dot() {
       if (this.current.indexOf('.') === -1 && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '')) {
