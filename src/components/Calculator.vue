@@ -351,21 +351,21 @@ export default {
 
 .btn {
   cursor: pointer;
-  background-color: rgba(22, 0, 0, 0);
-  color: rgb(164, 191, 249);
-  border: 1.5px solid rgb(79, 78, 78);
+  background-color: rgba(240, 142, 6, 0.93);
+  color: rgb(243, 244, 247);
+  border: 1.5px solid grey;
   /* border-radius: 60%; */
   text-align: center;
   font-size: 2rem;
 }
 
 .btn:hover {
-  background-color: white;
-  color: black
+  background-color: rgb(243, 244, 247);
+  color:  rgba(240, 142, 6, 0.93)
 }
 
 .operator {
-  background-color: rgb(31, 20, 0);
+  background-color:  rgba(22, 0, 0, 0);
   color: white;
 }
 
@@ -375,7 +375,7 @@ export default {
 }
 
 .function {
-  background-color: rgba(10, 32, 36, 0.564);
+  background-color: rgba(22, 0, 0, 0);
   color: rgb(232, 188, 30);
   font-size: 1.7rem;
 }
