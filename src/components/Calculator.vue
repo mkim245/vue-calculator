@@ -50,7 +50,13 @@ export default {
       }
     },
     del() {
-      this.current = this.current.slice(0, -1);
+        this.current = (!this.current.includes('^') &&
+        !this.current.includes('÷') &&
+        !this.current.includes('x') &&
+        this.current.charAt(this.current.length - 1) !== '+' &&
+        this.current.charAt(this.current.length - 1) !== '-' &&
+        this.current !== "3.1415926535897932384626433832795" &&
+        this.current !== "2.7182818284590452353602874713527")? this.current.slice(0, -1) : this.current;
     },
     setPrevious(name) { //to make continuous calcuation on previous results
       if (this.operator && this.previous) {
@@ -361,11 +367,11 @@ export default {
 
 .btn:hover {
   background-color: rgb(243, 244, 247);
-  color:  rgba(240, 142, 6, 0.93)
+  color: rgba(240, 142, 6, 0.93)
 }
 
 .operator {
-  background-color:  rgba(22, 0, 0, 0);
+  background-color: rgba(22, 0, 0, 0);
   color: white;
 }
 
