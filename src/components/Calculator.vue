@@ -143,11 +143,11 @@ export default {
       this.newcal = true;
     },
     naturalE() {
-      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? '2.7182818284590452353602874713527' : '';
+      this.current = !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? '2.7182818284590452353602874713527' : '';
       this.newcal = true;
     },
     pi() {
-      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? '3.1415926535897932384626433832795' : '';
+      this.current = !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') ? '3.1415926535897932384626433832795' : '';
       this.newcal = true;
     },
     pow() {
