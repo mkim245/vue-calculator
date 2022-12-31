@@ -58,6 +58,7 @@ export default {
         this.current !== "3.1415926535897932384626433832795" &&
         this.current !== "2.7182818284590452353602874713527" &&
         !this.newcal) ? this.current.slice(0, -1) : this.current;
+      if (this.current === '') this.current = '0'
     },
     setPrevious(name) { //to make continuous calcuation on previous results
       if (this.operator && this.previous) {
@@ -238,10 +239,10 @@ export default {
       <div class="title">{{ "Calculator Created by MGK Since Dec 2022, ver 1.2.0" }}</div>
       <div class="previous-operand">{{ previous }}</div>
       <div :class="current.length >= 20
-      ? current.length >= 26
-        ? 'current-operandsmaller'
-        : 'current-operandsmall'
-      : 'current-operand'">{{ current || '0' }}</div>
+  ? current.length >= 26
+    ? 'current-operandsmaller'
+    : 'current-operandsmall'
+  : 'current-operand'">{{ current || '0' }}</div>
     </div>
     <div @click="clear" class="btn function">&#119860&#119862</div> <!--AC-->
     <div @click="logarithm" class="btn function">&#119897&#119899</div> <!--ln-->
