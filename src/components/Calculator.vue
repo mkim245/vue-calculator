@@ -228,6 +228,9 @@ export default {
         this.newcal = true;
       }
     },
+    round() {
+      this.current = `${parseFloat(this.current).toFixed(2)}`
+    }
   }
 }
 
@@ -279,6 +282,7 @@ export default {
     <div @click="append('00')" class="btn">00</div>
     <div @click="dot" class="btn">.</div>
     <div @click="equal" class="btn operator">=</div>
+    <div @click="round" class="btn roundud operator">Round up/down</div>
     <div class="comments">
       <p>{{ 'version 1.2.0 - enable new calculation by clicking operators' }}</p>
       <p>{{ 'version 1.1.0 - enable simple calculations' }}</p>
@@ -356,6 +360,11 @@ export default {
   font-style: italic;
   height: 10px;
 }
+
+.roundud {
+  grid-column: 1 / -1;
+}
+
 
 .btn {
   cursor: pointer;
