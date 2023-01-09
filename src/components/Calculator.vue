@@ -282,7 +282,7 @@ export default {
     <div @click="append('00')" class="btn">00</div>
     <div @click="dot" class="btn">.</div>
     <div @click="equal" class="btn operator">=</div>
-    <div @click="round" class="btn roundud operator">Round up/down</div>
+    <div @click="round" class="roundud operator">Round (2 decimals)</div>
     <div class="comments">
       <p>{{ 'version 1.2.0 - enable new calculation by clicking operators' }}</p>
       <p>{{ 'version 1.1.0 - enable simple calculations' }}</p>
@@ -363,6 +363,8 @@ export default {
 
 .roundud {
   grid-column: 1 / -1;
+  font-size: 1.5rem;
+  border: 1.5px solid grey;
 }
 
 
