@@ -170,6 +170,30 @@ export default {
       this.operator = (a, b) => Math.pow(a, b);
       this.setPrevious('^');
     },
+    gallontoliter() {
+      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') && !this.current.includes('+') && this.current.charAt(this.current.length - 1) !== '-' && !this.current.includes('÷') && !this.current.includes('x') && !this.current.includes('^')
+        ? `${Math.round(10000000000 * (parseFloat(parseFloat(this.current) * 3.785411784))) / 10000000000}`
+        : `${this.current}`;
+      this.newcal = true;
+    },
+    litertogallon() {
+      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') && !this.current.includes('+') && this.current.charAt(this.current.length - 1) !== '-' && !this.current.includes('÷') && !this.current.includes('x') && !this.current.includes('^')
+        ? `${Math.round(10000000000 * (parseFloat(parseFloat(this.current) / 3.785411784))) / 10000000000}`
+        : `${this.current}`;
+      this.newcal = true;
+    },
+    metertofeet() {
+      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') && !this.current.includes('+') && this.current.charAt(this.current.length - 1) !== '-' && !this.current.includes('÷') && !this.current.includes('x') && !this.current.includes('^')
+        ? `${Math.round(10000000000 * (parseFloat(parseFloat(this.current) * 3.28084))) / 10000000000}`
+        : `${this.current}`;
+      this.newcal = true;
+    },
+    feettometer() {
+      this.current = this.current.charAt(0) !== '' && !(this.current.charAt(0) === '-' && this.current.charAt(1) === '') && !this.current.includes('+') && this.current.charAt(this.current.length - 1) !== '-' && !this.current.includes('÷') && !this.current.includes('x') && !this.current.includes('^')
+        ? `${Math.round(10000000000 * (parseFloat(parseFloat(this.current) / 3.28084))) / 10000000000}`
+        : `${this.current}`;
+      this.newcal = true;
+    },
     divide() {
       this.append(
         !this.current.includes('^') &&
@@ -282,7 +306,11 @@ export default {
     <div @click="append('00')" class="btn">00</div>
     <div @click="dot" class="btn">.</div>
     <div @click="equal" class="btn operator">=</div>
-    <div @click="round" class="roundud operator">Round (2 decimals)</div>
+    <div @click="litertogallon" class="btn function">l/g</div>
+    <div @click="gallontoliter" class="btn function">g/l</div>
+    <div @click="metertofeet" class="btn function">m/ft</div>
+    <div @click="feettometer" class="btn function">ft/m</div>
+    <div @click="round" class="btn operator">R</div>
     <div class="comments">
       <p>{{ 'version 1.2.0 - enable new calculation by clicking operators' }}</p>
       <p>{{ 'version 1.1.0 - enable simple calculations' }}</p>
@@ -361,11 +389,11 @@ export default {
   height: 10px;
 }
 
-.roundud {
+/* .roundud {
   grid-column: 1 / -1;
   font-size: 1.5rem;
   border: 1.5px solid grey;
-}
+} */
 
 
 .btn {
